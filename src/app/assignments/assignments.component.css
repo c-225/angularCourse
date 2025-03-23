@@ -1,0 +1,24 @@
+table, td, tr {
+    border: 1px solid black;
+}
+
+.submitted {
+    background-color: lightgreen;
+    color:green
+}
+
+.notSubmitted {
+    background-color: lightcoral;
+    color:red
+}
+
+.container {
+    display:flex;
+    flex-direction: column;
+    margin:5px;
+ }
+
+ .addAssignment {
+    align-self: flex-end;
+ }
+ 
