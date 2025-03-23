@@ -2,14 +2,21 @@
     <mat-card appearance="outlined">
         <mat-card-header>
             <mat-card-title> Assignment name: {{ transmittedAssignment.name }}</mat-card-title>
+            <mat-card-subtitle> Due date: {{ transmittedAssignment.dueDate | date: 'mediumDate' }}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-subtitle>{{ transmittedAssignment.dueDate | date: 'dd/mm/yyyy' }}</mat-card-subtitle>
 
-        @if (transmittedAssignment.submitted === false) {
-            <mat-checkbox (click)="transmittedAssignment.submitted = true;">
-                Submit project
-            </mat-checkbox>
-        }
-
+        <mat-card-actions id="bottom">
+            @if (!transmittedAssignment.submitted) {
+                <mat-checkbox (click)="transmittedAssignment.submitted = true;">
+                   Submitted
+                </mat-checkbox>
+            }
+            <nav><a [routerLink]="['/assignment',transmittedAssignment.id]">
+                <button mat-stroked-button color="primary">
+                Edit
+                </button>
+            </a></nav>
+            <button mat-flat-button color="accent" id="deleteButton" (click)="onDeleteAssignment()">DELETE</button>
+        </mat-card-actions>
     </mat-card>
 }

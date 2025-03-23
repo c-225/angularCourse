@@ -8,7 +8,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDivider } from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule} from '@angular/material/list';
+import { Router, RouterLink } from '@angular/router';
 
 import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
 
@@ -16,6 +17,8 @@ import { SubmittedDirective } from '../shared/submitted.directive';
 import { NotSubmittedDirective } from '../shared/notSubmitted.directive';
 import { Assignment } from './assignments.model';
 import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
+import { AssignmentsService } from '../shared/assignments.service';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-assignments',
@@ -24,6 +27,7 @@ import { AddAssignmentComponent } from './add-assignment/add-assignment.componen
     //Angular Material
     MatFormFieldModule, MatInputModule, MatButtonModule,
     MatDatepickerModule, MatNativeDateModule, MatDivider, MatListModule,
+    RouterLink,
     //My part
     AssignmentDetailComponent, SubmittedDirective, NotSubmittedDirective,
     AddAssignmentComponent
@@ -33,19 +37,21 @@ import { AddAssignmentComponent } from './add-assignment/add-assignment.componen
 })
 
 export class AssignmentsComponent implements OnInit{
-  titre = "This is the list of assignments :"
-  // FOR THE FORM INPUT FIELDS
+  titre = "This is my assignments application !"
+  formVisible = false;
+  selectedAssignment!:Assignment;
+  assignments: Assignment[] = [];
+
+  constructor(private assignmentsService: AssignmentsService) {}
+
   assignmentName = "";
   assignmentDueDate!:Date;
   addActive = false;
-  selectedAssignment!:Assignment;
-  transmittedAssignment: any;
-  formVisible = false;
+  transmittedAssignment: any;//
 
   ngOnInit(): void{
-    setTimeout(() => {
-        this.addActive = true;
-    }, 2000);
+    console.log("ngOnInit called during component initialization");
+    this.getAssignments();
   }
 
   onSubmit(event:any) {
@@ -58,33 +64,27 @@ export class AssignmentsComponent implements OnInit{
     this.assignments.push(newAssignment)
   }
 
-  assignments = [
-    {
-      name: "Assignment 1",
-      dueDate: new Date("2021-01-01"),
-      submitted: true,
-    },
-    {
-      name: "Assignment 2",
-      dueDate: new Date("2021-02-01"),
-      submitted: true,
-    },
-    {
-      name: "Assignment 3",
-      dueDate: new Date("2021-03-01"),
-      submitted: false,
-    }
-  ];
+  getAssignments(){
+    this.assignmentsService.getAssignments().subscribe(assignments => this.assignments = assignments);
+  }
 
   assignmentClique(assignment:Assignment) {
     this.selectedAssignment = assignment;
   }
+
   onAddAssignmentBtnClick() {
-    this.formVisible = true;
+    //this.formVisible = true;
   }
-  addAssignment(newAssignment:Assignment){
+
+
+  addAssignment(newAssignment: Assignment){
+    console.log("Nouvel assignment reçu : ", newAssignment);
     this.assignments.push(newAssignment);
     this.formVisible = false;
+  }
+
+  updateAssignment(assignment: Assignment) {
+    return of("Assignment service: Assignment updated");
   }
 
 }
