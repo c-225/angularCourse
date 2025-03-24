@@ -9,7 +9,7 @@ import { AssignmentsComponent } from './assignments/assignments.component';
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, MatButtonModule, MatIconModule, MatDividerModule, AssignmentsComponent],
+  imports: [CommonModule, RouterOutlet, MatButtonModule, MatIconModule, MatDividerModule, AssignmentsComponent, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

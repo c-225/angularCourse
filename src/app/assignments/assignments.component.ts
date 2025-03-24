@@ -8,7 +8,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDivider } from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule} from '@angular/material/list';
 
 import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
 
@@ -17,6 +17,7 @@ import { NotSubmittedDirective } from '../shared/notSubmitted.directive';
 import { Assignment } from './assignments.model';
 import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
 import { AssignmentsService } from '../shared/assignments.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-assignments',
@@ -27,14 +28,14 @@ import { AssignmentsService } from '../shared/assignments.service';
     MatDatepickerModule, MatNativeDateModule, MatDivider, MatListModule,
     //My part
     AssignmentDetailComponent, SubmittedDirective, NotSubmittedDirective,
-    AddAssignmentComponent
+    AddAssignmentComponent, RouterLink
 ],
   templateUrl: './assignments.component.html',
   styleUrl: './assignments.component.css'
 })
 
 export class AssignmentsComponent implements OnInit{
-  titre = "My assignments managing app !";
+  
   assignmentName = "";
   assignmentDueDate!:Date;
   addActive = false;
@@ -59,7 +60,7 @@ export class AssignmentsComponent implements OnInit{
     this.assignments.push(newAssignment)
   }
 
-  assignmentClique(assignment:Assignment) {
+  clickedAssignment(assignment:Assignment) {
     this.selectedAssignment = assignment;
   }
   onAddAssignmentBtnClick() {

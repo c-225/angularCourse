@@ -9,16 +9,19 @@ import { LoggingService } from './logging.service';
 export class AssignmentsService {
   assignments = [
     {
+      id:1,
       name: "Assignment 1",
       dueDate: new Date("2021-01-01"),
       submitted: true,
     },
     {
+      id:2,
       name: "Assignment 2",
       dueDate: new Date("2021-02-01"),
       submitted: true,
     },
     {
+      id:3,
       name: "Assignment 3",
       dueDate: new Date("2021-03-01"),
       submitted: false,
@@ -47,5 +50,10 @@ export class AssignmentsService {
     this.assignments.splice(index,1);
     this.loggingService.log(assignment.name, 'deleted');
     return of('Service: Assignment deleted')
+  }
+
+  getAssignment(id: number): Observable<Assignment | undefined>{
+    const assignment: Assignment|undefined = this.assignments.find(a => a.id === id);
+    return of(assignment);
   }
 }
