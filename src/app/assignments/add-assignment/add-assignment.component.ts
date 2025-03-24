@@ -1,20 +1,19 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, /*, EventEmitter, Output */ 
+OnInit} from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule } from '@angular/material/core';
-import { provideNativeDateAdapter} from '@angular/material/core';
-import { Assignment } from '../assignments.model';
+
 import { AssignmentsService } from '../../shared/assignments.service';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+
+import { FormsModule } from '@angular/forms';
+import { Assignment } from '../assignments.model';
 
 
 @Component({
   selector: 'app-add-assignment',
-  imports: [FormsModule, MatInputModule, MatDatepickerModule, MatButtonModule, MatFormFieldModule, MatNativeDateModule],
+  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatDatepickerModule, MatButtonModule],
   templateUrl: './add-assignment.component.html',
   styleUrl: './add-assignment.component.css'
 })
@@ -26,7 +25,7 @@ export class AddAssignmentComponent implements OnInit{
   assignmentName = "";
   dueDate!: Date;
 
-  constructor(private assignmentsService: AssignmentsService,  private router:Router) {}
+  constructor(private assignmentsService: AssignmentsService) {}
   ngOnInit(): void { }
 
   onSubmit(event:any) {
@@ -43,7 +42,6 @@ export class AddAssignmentComponent implements OnInit{
         console.log(message);
       }
     );
-    this.router.navigate(['/home']);
   }
 
 }

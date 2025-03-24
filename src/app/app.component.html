@@ -14,13 +14,13 @@
       <button mat-icon-button (click)="toggleSidebar()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>{{title}}</span>
+      <span>{{titre}}</span>
       <span class="spacer"></span>
       <button mat-button *ngIf="!authService.isAuthenticated()" [routerLink]="['/login']">
-        <mat-icon>login</mat-icon> Log in
+        <mat-icon>login</mat-icon> Connexion
       </button>
       <button mat-button *ngIf="authService.isAuthenticated()" (click)="logout()">
-        <mat-icon>logout</mat-icon> Log out
+        <mat-icon>logout</mat-icon> Déconnexion
       </button>
       <span *ngIf="authService.getCurrentUser()">
         Connecté en tant que: {{ authService.getCurrentUser()?.username }}

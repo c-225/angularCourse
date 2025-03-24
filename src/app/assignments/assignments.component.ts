@@ -29,7 +29,8 @@ import { of } from 'rxjs';
     MatDatepickerModule, MatNativeDateModule, MatDivider, MatListModule,
     RouterLink,
     //My part
-    SubmittedDirective, NotSubmittedDirective,
+    AssignmentDetailComponent, SubmittedDirective, NotSubmittedDirective,
+    AddAssignmentComponent
 ],
   templateUrl: './assignments.component.html',
   styleUrl: './assignments.component.css'
@@ -74,6 +75,7 @@ export class AssignmentsComponent implements OnInit{
   onAddAssignmentBtnClick() {
     //this.formVisible = true;
   }
+
 
   addAssignment(newAssignment: Assignment){
     console.log("Nouvel assignment reçu : ", newAssignment);
