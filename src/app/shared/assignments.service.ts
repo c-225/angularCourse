@@ -38,4 +38,10 @@ export class AssignmentsService {
   updateAssignment(assignment: Assignment): Observable<string>{
     return of('Service: Assignment updated!')
   }
+  
+  deleteAssignment(assignment: Assignment):Observable<string>{
+    let index = this.assignments.indexOf(assignment);
+    this.assignments.splice(index,1);
+    return of('Service: Assignment deleted')
+  }
 }
