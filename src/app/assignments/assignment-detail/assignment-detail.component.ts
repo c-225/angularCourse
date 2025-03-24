@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink} from '@angular/router';
 
 
 @Component({
@@ -20,7 +20,9 @@ export class AssignmentDetailComponent implements OnInit{
 
   constructor(
     private assignmentService: AssignmentsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private routerLink: RouterLink
   ) { }
 
   ngOnInit(): void {
@@ -31,20 +33,26 @@ export class AssignmentDetailComponent implements OnInit{
       this.assignmentService.updateAssignment(this.transmittedAssignment).subscribe(message => {
         console.log(message);
       });
-    
+    this.router.navigate(['/home']);
   }
 
   onDelete(){
     if (this.transmittedAssignment === undefined) return;
     this.assignmentService.deleteAssignment(this.transmittedAssignment).subscribe(message => {
       console.log(message)});
-      this.transmittedAssignment = undefined;
+    this.transmittedAssignment = undefined;
+    this.router.navigate(['/home']);
   }
   getAssignment(){
     const id = this.route.snapshot.params['id'];
     this.assignmentService.getAssignment(id).subscribe(assignment => {
       this.transmittedAssignment = assignment;
     });
+  }
+
+  onClickEdit() {
+    this.router.navigate(["/assignment", this.transmittedAssignment?.id, "edit"],
+    {queryParams:{name:this.transmittedAssignment?.name}, fragment: 'edition'})
   }
   
 

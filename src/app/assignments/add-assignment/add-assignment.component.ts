@@ -5,13 +5,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { provideNativeDateAdapter } from '@angular/material/core';
 
-
 import { FormsModule } from '@angular/forms';
 import { Assignment } from '../assignments.model';
 import { AssignmentsService } from '../../shared/assignments.service';
 
-
 @Component({
+  providers: [provideNativeDateAdapter()],
   selector: 'app-add-assignment',
   imports: [MatInputModule, MatFormFieldModule, FormsModule, MatDatepickerModule, MatButtonModule],
   templateUrl: './add-assignment.component.html',

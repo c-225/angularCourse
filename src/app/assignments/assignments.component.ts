@@ -17,7 +17,7 @@ import { NotSubmittedDirective } from '../shared/notSubmitted.directive';
 import { Assignment } from './assignments.model';
 import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
 import { AssignmentsService } from '../shared/assignments.service';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-assignments',
@@ -44,7 +44,9 @@ export class AssignmentsComponent implements OnInit{
   formVisible = false;
   assignments!: Assignment[];
 
-  constructor(private assignmentService: AssignmentsService){}
+  constructor(
+    private assignmentService: AssignmentsService,
+    private router: Router){}
 
   ngOnInit(): void{
     this.getAssignments();
@@ -76,6 +78,9 @@ export class AssignmentsComponent implements OnInit{
     this.formVisible = false;
   }
   */
+  showDetails(){
+    this.router.navigate(['/assignment', this.selectedAssignment.id]);
+  }
   
 
 }

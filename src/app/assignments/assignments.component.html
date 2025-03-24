@@ -18,7 +18,7 @@
         @for (item of assignments; track item.name) {
             <nav><a routerLink="/assignment/{{item.id}}">
             <div (click)="clickedAssignment(item)" >
-                <h3 mat-subheader>{{item.dueDate| date:'mediumDate'}}</h3>
+                <h3 mat-subheader>{{item.dueDate | date:'mediumDate'}}</h3>
 
                 @if (!item.submitted){
                     <mat-list-item appNotSubmitted>
