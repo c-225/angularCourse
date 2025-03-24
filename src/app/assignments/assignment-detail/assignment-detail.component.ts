@@ -46,7 +46,7 @@ export class AssignmentDetailComponent implements OnInit {
       });
   }
 
-  assignmentRendu() {
+  submitAssignment(): void {
     if (!this.transmittedAssignment) return;
 
     this.transmittedAssignment.submitted = true;

@@ -54,7 +54,7 @@ export class AppComponent {
     this.opened = !this.opened;
   }
 
-  genererDonneesDeTest() {
+  generateTestData() {
     console.log("generating test data...");
 
     this.assignmentsService.peuplerBDavecForkJoin()
