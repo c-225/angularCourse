@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink} from '@angular/router';
+import { AuthService } from '../../shared/auth.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class AssignmentDetailComponent implements OnInit{
     private assignmentService: AssignmentsService,
     private route: ActivatedRoute,
     private router: Router,
-    private routerLink: RouterLink
+    private routerLink: RouterLink,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -55,5 +57,8 @@ export class AssignmentDetailComponent implements OnInit{
     {queryParams:{name:this.transmittedAssignment?.name}, fragment: 'edition'})
   }
   
+  isAdmin(){
+    return this.authService.loggedIn;
+  }
 
 }
