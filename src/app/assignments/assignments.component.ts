@@ -16,6 +16,7 @@ import { SubmittedDirective } from '../shared/submitted.directive';
 import { NotSubmittedDirective } from '../shared/notSubmitted.directive';
 import { Assignment } from './assignments.model';
 import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
+import { AssignmentsService } from '../shared/assignments.service';
 
 @Component({
   selector: 'app-assignments',
@@ -33,19 +34,19 @@ import { AddAssignmentComponent } from './add-assignment/add-assignment.componen
 })
 
 export class AssignmentsComponent implements OnInit{
-  titre = "This is the list of assignments :"
-  // FOR THE FORM INPUT FIELDS
+  titre = "My assignments managing app !";
   assignmentName = "";
   assignmentDueDate!:Date;
   addActive = false;
   selectedAssignment!:Assignment;
   transmittedAssignment: any;
   formVisible = false;
+  assignments!: Assignment[];
+
+  constructor(private assignmentService: AssignmentsService){}
 
   ngOnInit(): void{
-    setTimeout(() => {
-        this.addActive = true;
-    }, 2000);
+    this.getAssignments();
   }
 
   onSubmit(event:any) {
@@ -58,32 +59,23 @@ export class AssignmentsComponent implements OnInit{
     this.assignments.push(newAssignment)
   }
 
-  assignments = [
-    {
-      name: "Assignment 1",
-      dueDate: new Date("2021-01-01"),
-      submitted: true,
-    },
-    {
-      name: "Assignment 2",
-      dueDate: new Date("2021-02-01"),
-      submitted: true,
-    },
-    {
-      name: "Assignment 3",
-      dueDate: new Date("2021-03-01"),
-      submitted: false,
-    }
-  ];
-
   assignmentClique(assignment:Assignment) {
     this.selectedAssignment = assignment;
   }
   onAddAssignmentBtnClick() {
     this.formVisible = true;
   }
-  addAssignment(newAssignment:Assignment){
+  onAddAssignment(newAssignment:Assignment){
     this.assignments.push(newAssignment);
+    this.formVisible = false;
+  }
+
+  getAssignments(){
+    this.assignmentService.getAssignments().subscribe(assignments => this.assignments = assignments);
+  }
+
+  onNewAssignment(event:Assignment){
+    this.assignmentService.addAssignment(event).subscribe(message => console.log(message))
     this.formVisible = false;
   }
 

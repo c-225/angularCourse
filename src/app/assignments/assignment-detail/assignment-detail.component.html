@@ -3,7 +3,7 @@
         <mat-card-header>
             <mat-card-title> Assignment name: {{ transmittedAssignment.name }}</mat-card-title>
         </mat-card-header>
-        <mat-card-subtitle>{{ transmittedAssignment.dueDate | date: 'dd/mm/yyyy' }}</mat-card-subtitle>
+        <mat-card-subtitle>{{ transmittedAssignment.dueDate | date: 'mediumDate' }}</mat-card-subtitle>
 
         @if (transmittedAssignment.submitted === false) {
             <mat-checkbox (click)="transmittedAssignment.submitted = true;">

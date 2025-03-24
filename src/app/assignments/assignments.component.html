@@ -3,7 +3,7 @@
 <h2>{{titre}}</h2>
 
 @if (formVisible){
-    <app-add-assignment (newAssignment)="addAssignment($event)"></app-add-assignment>
+    <app-add-assignment (newAssignment)="onAddAssignment($event)"></app-add-assignment>
 }
 
 @else {
@@ -19,7 +19,7 @@
             <div (click)="assignmentClique(item)" >
                 <h3 mat-subheader>{{item.dueDate| date:'mediumDate'}}</h3>
 
-                @if (item.submitted){
+                @if (!item.submitted){
                     <mat-list-item appNotSubmitted>
                         The assignment '{{item.name}}' hasn't been submitted.
                     </mat-list-item>

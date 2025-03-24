@@ -23,6 +23,8 @@ export class AddAssignmentComponent {
   dueDate!: Date;
 
   onSubmit(event:any) {
+    if (this.assignmentName === "" || this.dueDate === null) return;
+    
     const assignment = new Assignment();
 
     assignment.name = this.assignmentName;
