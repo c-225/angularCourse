@@ -14,23 +14,26 @@ import { CommonModule } from '@angular/common';
   styleUrl: './assignment-detail.component.css'
 })
 export class AssignmentDetailComponent implements OnInit{
-  @Input() transmittedAssignment!: Assignment;
+  @Input() transmittedAssignment?: Assignment;
 
-  constructor(private assignmentService: AssignmentsService) { }
+  constructor(private assignmentService: AssignmentsService, ) { }
 
   ngOnInit(): void {
   }
   
   onSubmittedAssignment(){
-    this.assignmentService.updateAssignment(this.transmittedAssignment).subscribe(message => {
-      console.log(message);
-    });
+    if (this.transmittedAssignment === undefined) return; 
+      this.assignmentService.updateAssignment(this.transmittedAssignment).subscribe(message => {
+        console.log(message);
+      });
+    
   }
 
   onDelete(){
+    if (this.transmittedAssignment === undefined) return;
     this.assignmentService.deleteAssignment(this.transmittedAssignment).subscribe(message => {
       console.log(message)});
-      this.transmittedAssignment = null;
+      this.transmittedAssignment = undefined;
   }
   
 
