@@ -63,20 +63,18 @@ export class AssignmentsComponent implements OnInit{
     this.selectedAssignment = assignment;
   }
   onAddAssignmentBtnClick() {
-    this.formVisible = true;
-  }
-  onAddAssignment(newAssignment:Assignment){
-    this.assignments.push(newAssignment);
-    this.formVisible = false;
+    //this.formVisible = true;
   }
 
   getAssignments(){
     this.assignmentService.getAssignments().subscribe(assignments => this.assignments = assignments);
   }
-
+  /*
   onNewAssignment(event:Assignment){
     this.assignmentService.addAssignment(event).subscribe(message => console.log(message))
     this.formVisible = false;
   }
+  */
+  
 
 }

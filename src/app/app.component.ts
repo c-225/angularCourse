@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -14,5 +14,5 @@ import { AssignmentsComponent } from './assignments/assignments.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'assignment-app';
+  title = 'Assignment Management App';
 }

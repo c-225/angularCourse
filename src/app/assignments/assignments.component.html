@@ -1,18 +1,18 @@
 
 
-<h2>{{titre}}</h2>
-
+<!--
 @if (formVisible){
-    <app-add-assignment (newAssignment)="onAddAssignment($event)"></app-add-assignment>
+    <app-add-assignment (newAssignment)="onNewAssignment($event)"></app-add-assignment>
 }
-
-@else {
+-->
+@if (!formVisible) {
     <main class="container">
-    <button class="addAssignment" mat-flat-button color="accent"
-            (click) = "onAddAssignmentBtnClick()">
-        Add an assignment
-    </button>
-        
+        <a routerLink="/add">
+            <button class="addAssignment" mat-flat-button color="accent"
+                    (click) = "onAddAssignmentBtnClick()">
+                Add an assignment
+            </button>
+        </a>
     <mat-list>
         <mat-divider></mat-divider>
         @for (item of assignments; track item.name) {
