@@ -10,7 +10,7 @@ export const routes: Routes = [
     {path: 'home', component: AssignmentsComponent},
     {path: 'add', component: AddAssignmentComponent},
     {path: 'assignment/:id', component: AssignmentDetailComponent},
+    {path: 'assignments/:id', component: AssignmentDetailComponent},
     {path: 'assignment/:id/edit', component: EditAssignmentComponent, canActivate: [authGuard]},
-    {path: '**', redirectTo: 'home', pathMatch: 'full'}
 
 ];

@@ -28,6 +28,14 @@ export class AssignmentDetailComponent implements OnInit{
   ) { }
 
   ngOnInit(): void {
+    const id:number = +this.route.snapshot.params['id'];
+    console.log("ngOnInit of assignment-detail", id)
+
+    this.assignmentService.getAssignment(id)
+      .subscribe(assignment => {
+        this.transmittedAssignment = assignment;
+      });
+
   }
   
   onSubmittedAssignment(){
