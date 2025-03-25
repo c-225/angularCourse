@@ -25,10 +25,9 @@ import { RouterLink, Router } from '@angular/router';
     CommonModule, FormsModule,
     //Angular Material
     MatFormFieldModule, MatInputModule, MatButtonModule,
-    MatDatepickerModule, MatNativeDateModule, MatDivider, MatListModule,
+    MatDatepickerModule, MatNativeDateModule, MatDivider, MatListModule, RouterLink,
     //My part
-    AssignmentDetailComponent, SubmittedDirective, NotSubmittedDirective,
-    AddAssignmentComponent, RouterLink
+    SubmittedDirective, NotSubmittedDirective
 ],
   templateUrl: './assignments.component.html',
   styleUrl: './assignments.component.css'
@@ -60,6 +59,7 @@ export class AssignmentsComponent implements OnInit{
     newAssignment.submitted = false;
 
     this.assignments.push(newAssignment)
+    this.transmittedAssignment = this.assignments[0]
   }
 
   clickedAssignment(assignment:Assignment) {
@@ -78,9 +78,5 @@ export class AssignmentsComponent implements OnInit{
     this.formVisible = false;
   }
   */
-  showDetails(){
-    this.router.navigate(['/assignment', this.selectedAssignment.id]);
-  }
-  
 
 }

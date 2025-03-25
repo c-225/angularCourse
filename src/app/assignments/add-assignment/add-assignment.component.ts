@@ -8,6 +8,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { Assignment } from '../assignments.model';
 import { AssignmentsService } from '../../shared/assignments.service';
+import { Router } from '@angular/router';
 
 @Component({
   providers: [provideNativeDateAdapter()],
@@ -20,7 +21,7 @@ export class AddAssignmentComponent implements OnInit{
   ngOnInit(): void {}
 
   //@Output() newAssignment = new EventEmitter<Assignment>();
-  constructor(private assignmentService: AssignmentsService) {}
+  constructor(private assignmentService: AssignmentsService, private router: Router) {}
   
   assignmentName = "";
   dueDate!: Date;
@@ -36,7 +37,10 @@ export class AddAssignmentComponent implements OnInit{
 
     this.assignmentService.addAssignment(assignment).subscribe(message =>{
       console.log(message);
-    })
+    });
+    this.router.navigate(['/home']);
     }
+
+
 
 }
