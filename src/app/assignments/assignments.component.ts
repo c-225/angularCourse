@@ -10,11 +10,9 @@ import { MatDivider } from '@angular/material/divider';
 import { MatListModule} from '@angular/material/list';
 import { RouterLink, Router } from '@angular/router';
 
-import { AssignmentDetailComponent } from './assignment-detail/assignment-detail.component';
 import { SubmittedDirective } from '../shared/submitted.directive';
 import { NotSubmittedDirective } from '../shared/notSubmitted.directive';
 import { Assignment } from './assignments.model';
-import { AddAssignmentComponent } from './add-assignment/add-assignment.component';
 import { AssignmentsService } from '../shared/assignments.service';
 
 @Component({
@@ -61,6 +59,7 @@ export class AssignmentsComponent implements OnInit{
   }
 
   clickedAssignment(assignment:Assignment) {
+    console.log(assignment.id, assignment.name);
     this.selectedAssignment = assignment;
   }
   onAddAssignmentBtnClick() {

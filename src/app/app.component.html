@@ -2,9 +2,9 @@
 <html>
   <div class="container">
     <h1>
-      <nav><a routerLink = "\home">{{title}}</a></nav>
+      <nav><a routerLink = "/home">{{title}}</a></nav>
     </h1>
-    <mat-slide-toggle color="primary">Login</mat-slide-toggle>
+    <mat-slide-toggle color="primary" (toggleChange)="login()">Login</mat-slide-toggle>
   </div>
 
   <router-outlet></router-outlet>

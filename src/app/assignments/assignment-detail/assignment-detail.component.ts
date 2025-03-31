@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, Router, RouterLink} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { AuthService } from '../../shared/auth.service';
 
 
@@ -23,7 +23,6 @@ export class AssignmentDetailComponent implements OnInit{
     private assignmentService: AssignmentsService,
     private route: ActivatedRoute,
     private router: Router,
-    private routerLink: RouterLink,
     private authService: AuthService
   ) { }
 
@@ -35,6 +34,8 @@ export class AssignmentDetailComponent implements OnInit{
       .subscribe(assignment => {
         this.transmittedAssignment = assignment;
       });
+    
+      console.log(this.transmittedAssignment)
 
   }
   
@@ -61,7 +62,7 @@ export class AssignmentDetailComponent implements OnInit{
   }
 
   onClickEdit() {
-    this.router.navigate(["/assignment", this.transmittedAssignment?.id, "edit"],
+    this.router.navigate(["/assignments", this.transmittedAssignment?.id, "edit"],
     {queryParams:{name:this.transmittedAssignment?.name}, fragment: 'edition'})
   }
   

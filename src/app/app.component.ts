@@ -4,14 +4,13 @@ import { RouterOutlet, RouterLink, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { AssignmentsComponent } from './assignments/assignments.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AuthService } from './shared/auth.service';
 
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule, RouterOutlet, MatButtonModule, MatIconModule, MatDividerModule, AssignmentsComponent, RouterLink, MatSlideToggleModule],
+  imports: [CommonModule, RouterOutlet, MatButtonModule, MatIconModule, MatDividerModule, RouterLink, MatSlideToggleModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

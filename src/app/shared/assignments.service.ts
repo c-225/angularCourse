@@ -28,6 +28,8 @@ export class AssignmentsService {
     }
   ];
 
+  numberOfAssignments = 4; // a revoir pour match le nb de taches
+
   constructor(private loggingService:LoggingService) { }
 
   getAssignments():Observable<Assignment[]> {
@@ -37,6 +39,7 @@ export class AssignmentsService {
   addAssignment(assignment: Assignment): Observable<string> {
     this.assignments.push(assignment);
     this.loggingService.log(assignment.name, 'added');
+    this.numberOfAssignments++;
     return of('assignment added');
   }
 

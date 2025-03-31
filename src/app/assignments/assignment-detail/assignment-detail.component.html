@@ -10,12 +10,12 @@
                 <mat-checkbox (click)="transmittedAssignment.submitted = true;">
                     Submit project
                 </mat-checkbox>
-
             }
-
             <button mat-stroked-button color = "primary" (click)="onClickEdit()" [disabled]="!isAdmin()"> Edit </button>
             <button mat-flat-button color = "red" (click)="onDelete()"> Delete </button>
         </mat-card-actions>
 
     </mat-card>
 }
+
+@else {This assignment doesn't exist, please go back to the previous page}

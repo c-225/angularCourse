@@ -16,8 +16,8 @@
     <mat-list>
         <mat-divider></mat-divider>
         @for (item of assignments; track item.name) {
-            <nav><a routerLink="/assignments/{{item.id}}">
-            <div (click)="clickedAssignment(item)" >
+            <nav><a routerLink="/assignments/{{item.id}}" (click)="clickedAssignment(item)" >
+            <div>
                 <h3 mat-subheader>{{item.dueDate | date:'mediumDate'}}</h3>
 
                 @if (!item.submitted){

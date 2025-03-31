@@ -21,7 +21,11 @@ export class AddAssignmentComponent implements OnInit{
   ngOnInit(): void {}
 
   //@Output() newAssignment = new EventEmitter<Assignment>();
-  constructor(private assignmentService: AssignmentsService, private router: Router) {}
+
+  constructor(
+    private assignmentService: AssignmentsService,
+    private router: Router
+  ) {}
   
   assignmentName = "";
   dueDate!: Date;
@@ -34,13 +38,12 @@ export class AddAssignmentComponent implements OnInit{
     assignment.name = this.assignmentName;
     assignment.dueDate = this.dueDate;
     assignment.submitted = false;
+    assignment.id = this.assignmentService.numberOfAssignments
 
     this.assignmentService.addAssignment(assignment).subscribe(message =>{
       console.log(message);
     });
     this.router.navigate(['/home']);
     }
-
-
 
 }

@@ -27,9 +27,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class EditAssignmentComponent implements OnInit {
   assignment: Assignment | undefined;
-  // Pour les champs de formulaire
-  nomAssignment = '';
-  dateDeRendu?: Date = undefined;
+  newAssignmentName = '';
+  newDueDate?: Date = undefined;
  
   constructor(
     private assignmentsService: AssignmentsService,
@@ -39,35 +38,34 @@ export class EditAssignmentComponent implements OnInit {
  
   ngOnInit() {
     
-    console.log("Query Params :");
-    console.log(this.route.snapshot.queryParams);
-    console.log("Fragment :");
-    console.log(this.route.snapshot.fragment);
+    console.log("Query Params :" + this.route.snapshot.queryParams);
+    console.log("Fragment :" + this.route.snapshot.fragment);
     
-    const _id = this.route.snapshot.params['id'];
+    const id:number = +this.route.snapshot.params['id'];
+    console.log("ngOnInit of assignment-edit", id)
 
-    this.assignmentsService.getAssignment(_id)
-    .subscribe(a => {
-      this.assignment = a;
+    this.assignmentsService.getAssignment(id).subscribe(assignment => {
+      console.log(assignment)
+      this.assignment = assignment;
       if (this.assignment) {
-        this.nomAssignment = this.assignment.name;
-        this.dateDeRendu = this.assignment.dueDate;
+        this.newAssignmentName = this.assignment.name;
+        this.newDueDate = this.assignment.dueDate;
       }
     });
+
   }
   onSaveAssignment() {
+    console.log('save')
     if (!this.assignment) return;
-    if (this.nomAssignment == '' || this.dateDeRendu === undefined) return;
+    if (this.newAssignmentName == '' || this.newDueDate === undefined) return;
  
     // on récupère les valeurs dans le formulaire
-    this.assignment.name = this.nomAssignment;
-    this.assignment.dueDate = this.dateDeRendu;
+    this.assignment.name = this.newAssignmentName;
+    this.assignment.dueDate = this.newDueDate;
     this.assignmentsService
       .updateAssignment(this.assignment)
       .subscribe((message) => {
         console.log(message);
- 
-        // navigation vers la home page
         this.router.navigate(['/home']);
       });
   }
