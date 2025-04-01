@@ -30,3 +30,23 @@ section {
     width: 140px;
   }
   
+  mat-sidenav-container {
+    height: calc(205vh - 115vh);
+  }
+  mat-sidenav {
+    width: 200px;
+    background-color: white;
+  }
+
+  mat-toolbar {
+    background-color: rgb(200, 125, 212);
+    height: 20px;
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }

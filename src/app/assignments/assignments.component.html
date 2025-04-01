@@ -1,47 +1,37 @@
-
-
-<!--
-@if (formVisible){
-    <app-add-assignment (newAssignment)="onNewAssignment($event)"></app-add-assignment>
-}
--->
-@if (!formVisible) {
-    <main class="container">
-        <a routerLink="/add">
-            <button class="addAssignment" mat-flat-button color="accent"
-                    (click) = "onAddAssignmentBtnClick()">
-                Add an assignment
-            </button>
-        </a>
-    <mat-list>
+<main class="container">
+    <a routerLink="/add">
+        <button class="addAssignment" mat-flat-button color="accent"
+                (click) = "onAddAssignmentBtnClick()">
+            Add an assignment
+        </button>
+    </a>
+<mat-list>
+    <mat-divider></mat-divider>
+    @for (item of assignments; track item.name) {
+        <nav><a routerLink="/assignments/{{item.id}}" (click)="clickedAssignment(item)" >
+        <div>
+            <h3 mat-subheader>{{item.dueDate | date:'mediumDate'}}</h3>
+            @if (!item.submitted){
+                <mat-list-item appNotSubmitted>
+                    The assignment '{{item.name}}' hasn't been submitted.
+                </mat-list-item>
+            }
+            @else {
+                <mat-list-item appSubmitted>
+                    The assignment '{{item.name}}' has been submitted.
+                </mat-list-item>
+            }
         <mat-divider></mat-divider>
-        @for (item of assignments; track item.name) {
-            <nav><a routerLink="/assignments/{{item.id}}" (click)="clickedAssignment(item)" >
-            <div>
-                <h3 mat-subheader>{{item.dueDate | date:'mediumDate'}}</h3>
-
-                @if (!item.submitted){
-                    <mat-list-item appNotSubmitted>
-                        The assignment '{{item.name}}' hasn't been submitted.
-                    </mat-list-item>
-                }
-                @else {
-                    <mat-list-item appSubmitted>
-                        The assignment '{{item.name}}' has been submitted.
-                    </mat-list-item>
-                }
-            <mat-divider></mat-divider>
-            </div>
-        </a></nav>
-        }
-    </mat-list>
-    <!-- 
-    <app-assignment-detail [transmittedAssignment]="selectedAssignment">
-        @if(transmittedAssignment) {
-            <p>{{transmittedAssignment.nom}}</p>
-        }
-    </app-assignment-detail>
+        </div>
+    </a></nav>
+    }
+</mat-list>
+<!-- 
+<app-assignment-detail [transmittedAssignment]="selectedAssignment">
+    @if(transmittedAssignment) {
+        <p>{{transmittedAssignment.nom}}</p>
+    }
+</app-assignment-detail>
 -->
-    
-    </main>
-}
+
+</main>

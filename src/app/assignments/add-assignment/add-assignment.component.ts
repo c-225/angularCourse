@@ -45,5 +45,4 @@ export class AddAssignmentComponent implements OnInit{
     });
     this.router.navigate(['/home']);
     }
-
 }

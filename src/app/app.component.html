@@ -1,11 +1,46 @@
 
 <html>
-  <div class="container">
-    <h1>
-      <nav><a routerLink = "/home">{{title}}</a></nav>
-    </h1>
-    <mat-slide-toggle color="primary" (toggleChange)="login()">Login</mat-slide-toggle>
-  </div>
-
-  <router-outlet></router-outlet>
+  <mat-toolbar>
+    <mat-toolbar-row class="title">
+      <h1><nav>
+        <a routerLink = "/home">{{title}}</a>
+      </nav></h1>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  
+  @if (!isLoggedIn()){
+    <app-login></app-login>
+  }
+  @else{
+    <mat-sidenav-container>
+      <mat-sidenav [(opened)]="sidenavOpen" mode="side">
+        <div>
+        <a routerLink="/add" (click)="sidenavOpen=false">
+          <mat-icon>add_circle_outline</mat-icon>
+          Add Assignment
+        </a>
+        </div>
+        <div>
+          <a routerLink = "/home">
+            <mat-icon>
+              home
+            </mat-icon>
+            Home page
+          </a>
+        </div>
+        <div>          
+        <a routerLink="/login" (click)="logout(); sidenavOpen=false" class="logout">
+          <mat-icon>logout</mat-icon>
+          Log out
+        </a>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <button mat-button (click)="sidenavOpen=!sidenavOpen">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  }
 </html>
