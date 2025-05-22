@@ -1,0 +1,64 @@
+mat-sidenav-container {
+  height: calc(205vh - 115vh);
+}
+
+
+mat-toolbar {
+  background-color: rgb(200, 125, 212);
+  height: 20px;
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.toolbar {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.menu-button {
+  position: absolute;
+  left: 1%;
+}
+
+
+
+
+/* sidenav content*/
+
+mat-sidenav {
+  width: 200px;
+  background-color: white;
+  border-right: 3px solid rgb(128, 128, 128);
+  border-bottom: 1px solid rgb(128, 128, 128);
+  border-top: 1px solid rgb(128, 128, 128);
+  padding-top: 25px;
+}
+
+mat-sidenav div {
+  margin-bottom: 8px;
+}
+
+mat-sidenav div a {
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+}
+
+mat-sidenav mat-icon {
+  margin-right: 8px;
+  color: #6c0086;
+}
+
+mat-sidenav-content, app-login {
+  display: flex;
+  justify-content: center;  /* horizontal */
+  background-color: white;
+}
+
+.assignment-list, .assignment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

@@ -1,0 +1,50 @@
+<html>
+<mat-toolbar>
+  <mat-toolbar-row class="toolbar">
+    @if (isLoggedIn()){
+    <button mat-button (click)="sidenavOpen=!sidenavOpen" class="menu-button">
+      <mat-icon>menu</mat-icon>
+    </button>
+    }
+    <h1>
+      <nav class="title">
+        <a routerLink="/home">{{title}}</a>
+      </nav>
+    </h1>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+@if (!isLoggedIn()){
+<app-login></app-login>
+}
+@else{
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="sidenavOpen" mode="over">
+    <div>
+      <a routerLink="/add" (click)="sidenavOpen=false">
+        <mat-icon>add_circle_outline</mat-icon>
+        Add Assignment
+      </a>
+    </div>
+    <div>
+      <a routerLink="/home">
+        <mat-icon>
+          home
+        </mat-icon>
+        Home page
+      </a>
+    </div>
+    <div>
+      <a routerLink="/login" (click)="logout(); sidenavOpen=false" class="logout">
+        <mat-icon>logout</mat-icon>
+        Log out
+      </a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+}
+
+</html>

@@ -1,0 +1,28 @@
+@if (transmittedAssignment){
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <mat-card-title>
+            <h3>Assignment : {{ transmittedAssignment.name }}</h3>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-subtitle>
+        Due date : {{ transmittedAssignment.dueDate | date: 'mediumDate' }}
+    </mat-card-subtitle>
+
+    <mat-card-actions id="actions">
+        @if (transmittedAssignment.submitted === false) {
+        <mat-checkbox (click)="transmittedAssignment.submitted = true; onSubmittedAssignment();">
+            Submit project
+        </mat-checkbox>
+        }
+        <div class="buttons-div">
+            <button mat-stroked-button (click)="onClickEdit()" [disabled]="!isAdmin()" class="Edit-button"> Edit
+            </button>
+            <button mat-stroked-button (click)="onDelete()" class="Delete-button" color="warn"> Delete </button>
+        </div>
+    </mat-card-actions>
+
+</mat-card>
+}
+
+@else {This assignment doesn't exist, please go back to the previous page}

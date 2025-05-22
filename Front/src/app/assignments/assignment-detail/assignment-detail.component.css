@@ -1,0 +1,17 @@
+mat-card, mat-card-header, mat-card-title, mat-card-subtitle, mat-card-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-card-title {
+    margin: 5px;
+}
+button {
+    margin: 5px;
+}
+
+.buttons-div {
+
+}
