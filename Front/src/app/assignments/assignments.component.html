@@ -1,0 +1,35 @@
+<main class="container">
+
+    <mat-list class="assignment-list">
+        @for (item of assignments; track item.name) {
+        <nav>
+
+            <div class="assignment">
+                <h3 mat-subheader>{{item.dueDate | date:'mediumDate'}}</h3>
+                
+                <a routerLink="/assignments/{{item.id}}" (click)="clickedAssignment(item)">
+                @if (!item.submitted){
+                <mat-list-item appNotSubmitted>
+                    The assignment '{{item.name}}' hasn't been submitted.
+                </mat-list-item>
+                }
+                @else {
+                <mat-list-item appSubmitted>
+                    The assignment '{{item.name}}' has been submitted.
+                </mat-list-item>
+                }
+                <mat-divider></mat-divider>
+                </a>
+            </div>
+        </nav>
+        }
+    </mat-list>
+    <!-- 
+<app-assignment-detail [transmittedAssignment]="selectedAssignment">
+    @if(transmittedAssignment) {
+        <p>{{transmittedAssignment.nom}}</p>
+    }
+</app-assignment-detail>
+-->
+
+</main>

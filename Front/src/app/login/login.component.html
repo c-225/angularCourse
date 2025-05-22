@@ -1,0 +1,14 @@
+<form ngForm #assignmentForm class="form" (submit)="onSubmit(null); assignmentForm.reset()">
+    <h3>Please log in to access the app</h3>
+    <mat-form-field>
+        <mat-label>Enter your username</mat-label>
+        <input matInput #nomUtilisateur placeholder="Username" [(ngModel)]="username" name="Username" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input matInput #motDePasse placeholder="password" [(ngModel)]="password" name="password" required>
+    </mat-form-field>
+    <button mat-stroked-button [disabled]="(this.password === '' || this.username === '' )" color="green" type="submit">
+        Log in
+    </button>
+</form>
