@@ -9,17 +9,17 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService implements OnInit {
-
+  users!: User[];
   ngOnInit(): void {
-    this.getUsers();
+    this.userService.getUsers().subscribe(users => this.users = users);
   }
 
   constructor(
     private userService: UsersService,
     private router: Router,
+
   ) { }
 
-  users: User[] = this.userService.getUsers().subscribe(users => this.users = users);
   currentUser:User |undefined;
   loggedIn!:boolean|null;
 
