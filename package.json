@@ -1,0 +1,6 @@
+{
+  "name": "assignment-app",
+  "scripts": {
+    "start": "concurrently \"npm --prefix front start\" \"npm --prefix api start\""
+  }
+}

@@ -2,18 +2,15 @@ let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
+let user = require('./routes/users');
 
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 //mongoose.set('debug', true);
 
 // remplacer toute cette chaine par l'uri de connexion à votre propre base dans le cloud s
-const urlAssignments = 'mongodb+srv://c225:zc108064@cluster0.wls5sqn.mongodb.net/assignmentsDB?retryWrites=true&w=majority&appName=Cluster0';
+const uri = 'mongodb+srv://c225:zc108064@cluster0.wls5sqn.mongodb.net/assignmentsDB?retryWrites=true&w=majority&appName=Cluster0';
 //faire cluster users pour remplacer le tableau
-const urlUsers = 'mongodb+srv://c225:zc108064@cluster0.wls5sqn.mongodb.net/assignmentsDB?retryWrites=true&w=majority&appName=Cluster0';
-// a faire et a repeter pour les differents clusters qu'on va faire
-const urls = []
-urls.push(urlAssignments)
 
 const options = {
   useNewUrlParser: true,
@@ -21,17 +18,16 @@ const options = {
   useFindAndModify:false
 };
 
-urls.forEach((uri) => {
-  mongoose.connect(uri, options)
-  .then(() => {
+mongoose.connect(uri, options).then(() => {
     console.log("Connecté à la base MongoDB assignments dans le cloud !");
-    console.log("at url = " + uri);
-    console.log("vérifiez with http://localhost:8010/api/assignments que cela fonctionne")
-    },
-    err => {
-      console.log('Erreur de connexion: ', err);
-    });
-})
+    console.log("à url = " + uri);
+    console.log("vérifiez avec http://localhost:8010/api/assignments que cela fonctionne")
+    console.log("vérifiez avec http://localhost:8010/api/users que cela fonctionne")
+  },
+  err => {
+    console.log('Erreur de connexion: ', err);
+});
+
 
 
 // Pour accepter les connexions cross-domain (CORS)
@@ -61,6 +57,18 @@ app.route(prefix + '/assignments/:id')
 app.route(prefix + '/assignments')
   .post(assignment.postAssignment)
   .put(assignment.updateAssignment);
+
+
+app.route(prefix + '/users')
+  .get(user.getUsers);
+
+app.route(prefix + '/users/:id')
+  .get(user.getUser)
+  .delete(user.deleteUser);
+
+app.route(prefix + '/users')
+  .post(user.postUser)
+  .put(user.updateUser);
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");

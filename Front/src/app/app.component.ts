@@ -12,6 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from "./login/login.component";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Users } from "./users/users";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     CommonModule, RouterOutlet, MatButtonModule, MatIconModule,
     MatDividerModule, RouterLink, MatSlideToggleModule, MatSidenavModule,
     FormsModule, MatToolbarModule,
-    LoginComponent, HttpClientModule
+    LoginComponent, HttpClientModule,
+    Users
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
