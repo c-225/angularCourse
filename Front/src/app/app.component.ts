@@ -12,7 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from "./login/login.component";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Users } from "./users/users";
+import { Users } from "./users/users.component";
 
 @Component({
   selector: 'app-root',
