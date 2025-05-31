@@ -5,7 +5,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/auth.service';
+import { UsersService } from '../shared/users.service';
 import { MatCardModule } from '@angular/material/card';
+import { User } from '../shared/users.model';
 
 @Component({
   selector: 'app-login',
@@ -15,20 +17,34 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class LoginComponent {
   constructor(
+      private usersService: UsersService,
       private authService: AuthService,
       private router: Router
     ) {}
-    
+
+    users: User[] = [];
+
     username = "";
     password = "";
 
-    onSubmit(event:any) {
-      if (this.authService.getUser(this.username,this.password)){
+    onSubmit(event: any) {
+      const user = this.authService.getUser(this.username, this.password);
+      if (user) {
         this.router.navigate(['/home']);
         this.authService.login();
+      } else {
+        console.error('Invalid username or password');
       }
-      else {
-        console.log('wrong password/username cuh');
+    }
+
+    getUsers() {
+      this.usersService.getUsers().subscribe(users => {
+        (users: User[]) => this.users = users;
       }
+      );
+    }
+
+    onInit() {
+      this.getUsers();
     }
 }

@@ -1,26 +1,9 @@
-<p>users works!</p>
 <mat-list class="user-list">
         @for (item of users; track item.username) {
         <nav>
             <div class="user">                
-                <a routerLink="/users/{{item.id}}" (click)="clickedUser(item)">
-                @if (item.role === 'admin') {
-                <mat-list-item appNotSubmitted>
-                    The user '{{item.username}}' is an admin.
-                </mat-list-item>
-                }
-                @if (item.role === 'student') {
-                <mat-list-item appSubmitted>
-                    The user '{{item.username}}' is a student.
-                </mat-list-item>
-                }
-                @if (item.role === 'prof') {
-                <mat-list-item appSubmitted>
-                    The user '{{item.username}}' is a teacher.
-                </mat-list-item>
-                }
-                <mat-divider></mat-divider>
-                </a>
+                
+
             </div>
         </nav>
         }
