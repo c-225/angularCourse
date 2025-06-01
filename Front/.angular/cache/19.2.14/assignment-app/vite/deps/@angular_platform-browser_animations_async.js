@@ -1,10 +1,10 @@
 import {
   DomRendererFactory2
-} from "./chunk-MMHYKJQ2.js";
-import "./chunk-QTGIWCMJ.js";
+} from "./chunk-KU6ZRVWH.js";
+import "./chunk-GNCQMX7A.js";
 import {
   DOCUMENT
-} from "./chunk-PJ4EUTOV.js";
+} from "./chunk-WMMX2TDV.js";
 import {
   ANIMATION_MODULE_TYPE,
   ChangeDetectionScheduler,
@@ -20,8 +20,7 @@ import {
   setClassMetadata,
   ɵɵdefineInjectable,
   ɵɵinvalidFactory
-} from "./chunk-QQVQDVDW.js";
-import "./chunk-WDMUDEB6.js";
+} from "./chunk-BWSTGILA.js";
 
 // node_modules/@angular/platform-browser/fesm2022/animations/async.mjs
 var ANIMATION_PREFIX = "@";

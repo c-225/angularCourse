@@ -28,7 +28,7 @@ import { User } from './shared/users.model';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
-  title = 'Assignment Management App';
+  title = 'Pronote';
   sidenavOpen = false;
 
   constructor(private authService:AuthService, private router: Router) {}
