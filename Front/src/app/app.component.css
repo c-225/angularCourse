@@ -23,6 +23,9 @@ mat-toolbar {
   left: 1%;
   color: #D78521;
 }
+
+/* sidenav content*/
+
 mat-sidenav {
   width: 200px;
   background-color: white;

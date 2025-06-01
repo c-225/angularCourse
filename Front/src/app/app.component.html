@@ -1,5 +1,4 @@
 <html>
-  <app-users></app-users>
 <mat-toolbar>
   <mat-toolbar-row class="toolbar">
     @if (isLoggedIn()){
@@ -30,12 +29,26 @@
     </div>
     <div>
       <a routerLink="/home">
-        <mat-icon>
-          home
-        </mat-icon>
+        <mat-icon> home </mat-icon>
         Home page
       </a>
     </div>
+    @if (isTeacher()) {
+    <div>
+      <a routerLink="/grades-list" (click)="sidenavOpen=false">
+        <mat-icon> school </mat-icon>
+        Grade assignments
+      </a>
+    </div>
+    }
+    @if (isAdmin() | async) {
+      <div>
+        <a routerLink="/users" (click)="sidenavOpen=false" class="users">
+          <mat-icon> group </mat-icon>
+          users
+        </a>
+      </div>
+    }
     <div>
       <a routerLink="/login" (click)="logout(); sidenavOpen=false" class="logout">
         <mat-icon>logout</mat-icon>

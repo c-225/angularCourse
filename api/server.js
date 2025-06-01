@@ -3,6 +3,7 @@ let app = express();
 let bodyParser = require('body-parser');
 let assignment = require('./routes/assignments');
 let user = require('./routes/users');
+let grade = require('./routes/grades');
 
 let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
@@ -23,6 +24,8 @@ mongoose.connect(uri, options).then(() => {
     console.log("à url = " + uri);
     console.log("vérifiez avec http://localhost:8010/api/assignments que cela fonctionne")
     console.log("vérifiez avec http://localhost:8010/api/users que cela fonctionne")
+    console.log("vérifiez avec http://localhost:8010/api/grades que cela fonctionne")
+
   },
   err => {
     console.log('Erreur de connexion: ', err);
@@ -69,6 +72,17 @@ app.route(prefix + '/users/:id')
 app.route(prefix + '/users')
   .post(user.postUser)
   .put(user.updateUser);
+
+app.route(prefix + '/grades')
+  .get(grade.getGrades);
+
+app.route(prefix + '/grades/:id')
+  .get(grade.getGrade)
+  .delete(grade.deleteGrade);
+
+app.route(prefix + '/grades')
+  .post(grade.postGrade)
+  .put(grade.updateGrade);
 
 // On démarre le serveur
 app.listen(port, "0.0.0.0");
