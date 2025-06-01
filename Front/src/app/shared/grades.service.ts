@@ -1,67 +1,35 @@
-import { Injectable, OnInit } from '@angular/core';
-import { User } from './users.model';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { UsersService } from './users.service';
-import { Router } from '@angular/router';
+import { LoggingService } from './logging.service';
+import { HttpClient } from '@angular/common/http';
+import { Grades } from '../grades/grades.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class GradesService implements OnInit{
+export class GradesService {
+  backendURL = 'http://localhost:8010/api/grades';
+  grades = [];
 
-  constructor(
-    private userService: UsersService,
-    private router: Router,
-  ) { 
-    this.getUsers();
+  constructor(private loggingService:LoggingService, private http:HttpClient) { }
+
+  getGrades():Observable<any> {
+    return this.http.get<any>(this.backendURL)
   }
-  currentUser:User |undefined;
-  loggedIn!:boolean|null;
-
-  users: User[] = [];
-  
-  login() {
-    this.loggedIn = true;
+    
+  setGrade(id: number): Observable<any>{
+    return this.http.get<any>(this.backendURL+'/'+id)
   }
 
-  logout() {
-    this.loggedIn = false
-    this.currentUser = undefined;
+  addGrade(grade: Grades): Observable<any> {
+    return this.http.post<Grades>(this.backendURL, grade)
   }
 
-  isAdmin(){
-    return new Promise<boolean>((resolve) => {
-      if (this.currentUser) {
-        resolve(this.currentUser.isAdmin);
-      } else {
-        resolve(false);
-      }
-    });
-  }
-
-  getUser(username:string, password:string): boolean{
-    console.log(typeof(this.users));
-    if (this.users.length === 0) {
-      console.error('User list is empty, fetch users.');
-      return false;
-    }
-
-    const user = this.users.find(user => user.username === username && user.password === password);
-    if (user) {
-      this.currentUser = user;
-      return true;
-    } else {
-      console.error('Invalid username or password');
-      return false;
-    }
-  }
-
-  ngOnInit(): void {
-    this.getUsers();
+  updateGrade(grade: Grades): Observable<any>{
+    return this.http.put<string>(this.backendURL, grade)
   }
   
-  getUsers() {
-    this.userService.getUsers().subscribe(users => {this.users = users;});
+  deleteGrade(grade: Grades):Observable<any>{
+    return this.http.delete<string>(this.backendURL +'/'+ grade.id)    
   }
 }

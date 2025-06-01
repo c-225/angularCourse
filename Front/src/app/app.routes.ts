@@ -6,6 +6,7 @@ import { EditAssignmentComponent } from './assignments/edit-assignment/edit-assi
 import { authGuard } from './shared/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
+import { GradesComponent } from './grades/grades.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -14,6 +15,7 @@ export const routes: Routes = [
     {path: 'add', component: AddAssignmentComponent},
     {path: 'assignments/:id', component: AssignmentDetailComponent},
     {path: 'assignments/:id/edit', component: EditAssignmentComponent, /*canActivate: [authGuard]*/},
-    {path: 'login', component:LoginComponent}
+    {path: 'login', component:LoginComponent},
+    {path: 'grades/:id', component:GradesComponent},
     //{path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];

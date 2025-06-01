@@ -3,4 +3,5 @@ export class Assignment {
     name!:string;
     dueDate!:Date;
     subject!:string;
+    submitted!:boolean;
 }
