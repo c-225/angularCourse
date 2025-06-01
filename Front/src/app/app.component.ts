@@ -15,6 +15,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { UsersComponent } from "./users/users.component";
 import { GradesComponent } from "./grades/grades.component";
 import { GradingList } from "./grades/grading-list/grading-list";
+import { User } from './shared/users.model';
 
 @Component({
   selector: 'app-root',
@@ -29,8 +30,9 @@ import { GradingList } from "./grades/grading-list/grading-list";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
-  title = 'Assignment Management App';
+  title = 'Pronote';
   sidenavOpen = false;
+  currentUser: any;
 
   constructor(private authService:AuthService, private router: Router) {}
   ngOnInit(): void {

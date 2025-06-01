@@ -6,9 +6,10 @@ import { Directive, ElementRef } from '@angular/core';
 export class SubmittedDirective {
 
   constructor(el:ElementRef) {
-    el.nativeElement.style.color = 'green';
+    el.nativeElement.style.color = 'white';
     el.nativeElement.style.fontWeight = 'bold';
     el.nativeElement.style.backgroundColor = 'lightgreen';
+    el.nativeElement.style.textDecoration = 'none';
   }
 
 }
