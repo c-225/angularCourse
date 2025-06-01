@@ -3,7 +3,7 @@ import {
   LOCALE_ID,
   Subject,
   inject
-} from "./chunk-XLE5N5VE.js";
+} from "./chunk-BWSTGILA.js";
 
 // node_modules/@angular/material/fesm2022/date-formats-K6TQue-Y.mjs
 var MAT_DATE_LOCALE = new InjectionToken("MAT_DATE_LOCALE", {
@@ -185,4 +185,4 @@ export {
   DateAdapter,
   MAT_DATE_FORMATS
 };
-//# sourceMappingURL=chunk-H6LBGD2H.js.map
+//# sourceMappingURL=chunk-UZKL4Y5I.js.map

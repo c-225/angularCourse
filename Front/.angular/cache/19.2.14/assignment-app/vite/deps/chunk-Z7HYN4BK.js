@@ -8,7 +8,7 @@ import {
   inject,
   setClassMetadata,
   ɵɵdefineInjectable
-} from "./chunk-XLE5N5VE.js";
+} from "./chunk-BWSTGILA.js";
 
 // node_modules/@angular/cdk/fesm2022/style-loader-Cu9AvjH9.mjs
 var appsWithLoaders = /* @__PURE__ */ new WeakMap();
@@ -76,4 +76,4 @@ export {
   _CdkPrivateStyleLoader,
   _bindEventWithOptions
 };
-//# sourceMappingURL=chunk-LZVZRXMX.js.map
+//# sourceMappingURL=chunk-Z7HYN4BK.js.map

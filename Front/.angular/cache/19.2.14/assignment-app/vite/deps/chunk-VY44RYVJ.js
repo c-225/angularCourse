@@ -1,15 +1,15 @@
 import {
   MatRipple
-} from "./chunk-HX6F7PR6.js";
+} from "./chunk-O4OBFIQ3.js";
 import {
   MatCommonModule
-} from "./chunk-IGQT554A.js";
+} from "./chunk-UW3SXOY7.js";
 import {
   NgModule,
   setClassMetadata,
   ɵɵdefineInjector,
   ɵɵdefineNgModule
-} from "./chunk-XLE5N5VE.js";
+} from "./chunk-BWSTGILA.js";
 
 // node_modules/@angular/material/fesm2022/index-SYVYjXwK.mjs
 var MatRippleModule = class _MatRippleModule {
@@ -38,4 +38,4 @@ var MatRippleModule = class _MatRippleModule {
 export {
   MatRippleModule
 };
-//# sourceMappingURL=chunk-YUYZUXDN.js.map
+//# sourceMappingURL=chunk-VY44RYVJ.js.map

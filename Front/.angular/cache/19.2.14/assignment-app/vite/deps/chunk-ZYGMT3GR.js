@@ -8,7 +8,7 @@ import {
   ɵɵdefineComponent,
   ɵɵprojection,
   ɵɵprojectionDef
-} from "./chunk-XLE5N5VE.js";
+} from "./chunk-BWSTGILA.js";
 
 // node_modules/@angular/material/fesm2022/internal-form-field-grv62mCZ.mjs
 var _c0 = ["mat-internal-form-field", ""];
@@ -74,4 +74,4 @@ var _MatInternalFormField = class __MatInternalFormField {
 export {
   _MatInternalFormField
 };
-//# sourceMappingURL=chunk-Z2HLJK2C.js.map
+//# sourceMappingURL=chunk-ZYGMT3GR.js.map

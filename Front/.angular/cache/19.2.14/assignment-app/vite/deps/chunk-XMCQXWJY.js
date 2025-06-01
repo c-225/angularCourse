@@ -3,7 +3,7 @@ import {
   InjectionToken,
   isObservable,
   of
-} from "./chunk-XLE5N5VE.js";
+} from "./chunk-BWSTGILA.js";
 
 // node_modules/@angular/cdk/fesm2022/data-source-D34wiQZj.mjs
 var DataSource = class {
@@ -135,4 +135,4 @@ export {
   _VIEW_REPEATER_STRATEGY,
   _RecycleViewRepeaterStrategy
 };
-//# sourceMappingURL=chunk-ZGNBMQME.js.map
+//# sourceMappingURL=chunk-XMCQXWJY.js.map

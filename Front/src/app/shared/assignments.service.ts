@@ -44,6 +44,10 @@ export class AssignmentsService {
     //return of('Service: Assignment updated!')
     return this.http.put<string>(this.backendURL, assignment)
   }
+
+  getAssignmentPagination(page: number, limit: number) {
+    return this.http.get<any>(`${this.backendURL}/assignments?page=${page}&limit=${limit}`);
+  }
   
   deleteAssignment(assignment: Assignment):Observable<any>{
     //let index = this.assignments.indexOf(assignment);

@@ -21,7 +21,11 @@ import { UsersService } from '../shared/users.service';
     CommonModule, FormsModule,
     //Angular Material
     MatFormFieldModule, MatInputModule, MatButtonModule,
+<<<<<<< HEAD
     MatDatepickerModule, MatNativeDateModule,  MatListModule, RouterLink,],
+=======
+    MatDatepickerModule, MatNativeDateModule, MatListModule],
+>>>>>>> 75bb655c9a4776dde4373bbccbf82cfda15cc37c
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })
