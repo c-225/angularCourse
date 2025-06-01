@@ -39,3 +39,15 @@ tr {
     justify-content: right;
     padding: 10px;
 }
+
+.loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.assignment-list {
+    max-height: 80vh;
+    overflow-y: auto;
+}

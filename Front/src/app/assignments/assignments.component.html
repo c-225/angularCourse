@@ -1,6 +1,10 @@
 <main class="container">
 
-    <mat-list class="assignment-list">
+    <mat-list class="assignment-list"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
         @for (item of assignments; track item.name) {
         <nav>
             <div class="assignment">
@@ -21,6 +25,12 @@
                 </a>
             </div>
         </nav>
+        }
+
+        @if (isLoading) {
+            <div class="loading-indicator">
+                <mat-progress-spinner diameter="40"></mat-progress-spinner>
+            </div>
         }
     </mat-list>
     <!-- 

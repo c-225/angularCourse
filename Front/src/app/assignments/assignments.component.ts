@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDivider } from '@angular/material/divider';
 import { MatListModule} from '@angular/material/list';
 import { RouterLink, Router } from '@angular/router';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { InfiniteScrollDirective, InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { SubmittedDirective } from '../shared/submitted.directive';
 import { NotSubmittedDirective } from '../shared/notSubmitted.directive';
@@ -23,7 +25,8 @@ import { AssignmentsService } from '../shared/assignments.service';
     MatFormFieldModule, MatInputModule, MatButtonModule,
     MatDatepickerModule, MatNativeDateModule, MatDivider, MatListModule, RouterLink,
     //My part
-    SubmittedDirective, NotSubmittedDirective
+    SubmittedDirective, NotSubmittedDirective, 
+    MatProgressSpinnerModule, InfiniteScrollDirective, InfiniteScrollModule
 ],
   templateUrl: './assignments.component.html',
   styleUrl: './assignments.component.css'
@@ -38,6 +41,11 @@ export class AssignmentsComponent implements OnInit{
   transmittedAssignment: any;
   formVisible = false;
   assignments!: Assignment[];
+
+  page: number=0;
+  limit: number =10;
+  isLoading: boolean = false;
+  hasMoreData: boolean = true;
 
   constructor(
     private assignmentService: AssignmentsService,
@@ -68,6 +76,12 @@ export class AssignmentsComponent implements OnInit{
 
   getAssignments(){
     this.assignmentService.getAssignments().subscribe(assignments => this.assignments = assignments);
+  }
+
+  onScroll() {
+    if (!this.isLoading && this.hasMoreData) {
+      this.getAssignments();
+    }
   }
   /*
   onNewAssignment(event:Assignment){
