@@ -7,8 +7,6 @@ import { authGuard } from './shared/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { GradesComponent } from './grades/grades.component';
-import { UsersComponent } from './users/users.component';
-import { UserDetail } from './users/user-detail/user-detail';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -16,10 +14,8 @@ export const routes: Routes = [
     {path: ':prefix/home', redirectTo: 'home'},
     {path: 'add', component: AddAssignmentComponent},
     {path: 'assignments/:id', component: AssignmentDetailComponent},
-    {path: 'assignments/:id/edit', component: EditAssignmentComponent/*, canActivate: [authGuard]*/},
+    {path: 'assignments/:id/edit', component: EditAssignmentComponent, /*canActivate: [authGuard]*/},
     {path: 'login', component:LoginComponent},
     {path: 'grades/:id', component:GradesComponent},
-    {path: 'users', component:UsersComponent},
-    {path: 'users/:id', component: UserDetail},
     //{path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];

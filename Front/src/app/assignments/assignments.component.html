@@ -9,6 +9,7 @@
         <nav>
             <div class="assignment">
                 <h3 mat-subheader>{{item.dueDate | date:'mediumDate'}}</h3>
+                
                 <a routerLink="/assignments/{{item.id}}" (click)="clickedAssignment(item)">
                 @if (!item.submitted){
                 <mat-list-item appNotSubmitted>
