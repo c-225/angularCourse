@@ -41,7 +41,7 @@ export class AssignmentDetailComponent implements OnInit{
   }
   
   onSubmittedAssignment(){
-    this.transmittedAssignment.submitted = true;
+    //this.transmittedAssignment.submitted = true;
     this.assignmentService
       .updateAssignment(this.transmittedAssignment)
       .subscribe((message) => {
@@ -71,7 +71,13 @@ export class AssignmentDetailComponent implements OnInit{
   }
   
   isAdmin(){
-    return this.authService.currentUser?.isAdmin;
+    return this.authService.currentUser?.role === 'admin';
+  }
+  isTeacher(){
+    return this.authService.currentUser?.role === 'teacher';
+  }
+  isStudent(){
+    return this.authService.currentUser?.role === 'student';
   }
 
 }

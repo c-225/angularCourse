@@ -33,7 +33,7 @@ export class AuthService implements OnInit {
   isAdmin(){
     return new Promise<boolean>((resolve) => {
       if (this.currentUser) {
-        resolve(this.currentUser.isAdmin);
+        resolve(this.currentUser.role === 'admin');
       } else {
         resolve(false);
       }

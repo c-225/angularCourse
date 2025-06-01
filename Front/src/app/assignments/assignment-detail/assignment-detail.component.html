@@ -10,15 +10,19 @@
     </mat-card-subtitle>
 
     <mat-card-actions id="actions">
-        @if (transmittedAssignment.submitted === false) {
-        <mat-checkbox (click)="transmittedAssignment.submitted = true; onSubmittedAssignment();">
-            Submit project
-        </mat-checkbox>
-        }
         <div class="buttons-div">
-            <button mat-stroked-button (click)="onClickEdit()" [disabled]="!isAdmin()" class="Edit-button"> Edit
-            </button>
-            <button mat-stroked-button (click)="onDelete()" class="Delete-button" color="warn"> Delete </button>
+            @if (isAdmin()) {
+                <button mat-stroked-button (click)="onClickEdit()" class="Edit-button"> Edit </button>
+                <button mat-stroked-button (click)="onDelete()" class="Delete-button" color="warn"> Delete </button>
+            }
+            @if (isTeacher()){
+                <button mat-stroked-button class="Grade-button"> Grade </button>
+            }
+            @if (isStudent()) {
+                <!-- Check if the assignment is already submitted y getting assignment id matching with a grade -->
+                This assignment is not submitted yet.
+                <button mat-stroked-button class="Submit-button" (click)="onSubmittedAssignment()"> Submit </button>
+            }
         </div>
     </mat-card-actions>
 
