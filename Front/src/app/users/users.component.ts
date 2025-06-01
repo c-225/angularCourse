@@ -21,11 +21,11 @@ import { UsersService } from '../shared/users.service';
     CommonModule, FormsModule,
     //Angular Material
     MatFormFieldModule, MatInputModule, MatButtonModule,
-    MatDatepickerModule, MatNativeDateModule, MatDivider, MatListModule, RouterLink,],
+    MatDatepickerModule, MatNativeDateModule,  MatListModule, RouterLink,],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })
-export class Users implements OnInit {
+export class UsersComponent implements OnInit {
 
   firstName = "";
   lastName = "";

@@ -12,7 +12,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from "./login/login.component";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Users } from "./users/users.component";
+import { UsersComponent } from "./users/users.component";
+import { GradesComponent } from "./grades/grades.component";
+import { GradingList } from "./grades/grading-list/grading-list";
 
 @Component({
   selector: 'app-root',
@@ -21,7 +23,7 @@ import { Users } from "./users/users.component";
     MatDividerModule, RouterLink, MatSlideToggleModule, MatSidenavModule,
     FormsModule, MatToolbarModule,
     LoginComponent, HttpClientModule,
-    Users
+    GradingList
 ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
@@ -48,5 +50,15 @@ export class AppComponent implements OnInit{
 
   isLoggedIn(){
     return this.authService.loggedIn
+  }
+
+  isAdmin() {
+    return this.authService.isAdmin();
+  }
+  isTeacher() {
+    return this.authService.currentUser?.role === 'teacher';
+  }
+  isStudent() {
+    return this.authService.currentUser?.role === 'student';
   }
 }

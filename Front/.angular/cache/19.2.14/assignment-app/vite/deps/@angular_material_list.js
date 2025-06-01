@@ -1,4 +1,7 @@
 import {
+  MatPseudoCheckboxModule
+} from "./chunk-Y5KLUM7V.js";
+import {
   MatDivider,
   MatDividerModule
 } from "./chunk-2M67BHNF.js";
@@ -7,9 +10,6 @@ import {
   NG_VALUE_ACCESSOR
 } from "./chunk-JFCJB3OK.js";
 import {
-  MatPseudoCheckboxModule
-} from "./chunk-Y5KLUM7V.js";
-import {
   MatRippleModule
 } from "./chunk-YUYZUXDN.js";
 import {
@@ -17,10 +17,10 @@ import {
   RippleRenderer,
   _StructuralStylesLoader
 } from "./chunk-HX6F7PR6.js";
+import "./chunk-QRZXWOK7.js";
 import {
   coerceBooleanProperty
 } from "./chunk-JXBCBRYI.js";
-import "./chunk-QRZXWOK7.js";
 import "./chunk-2O4WY5GE.js";
 import {
   A,

@@ -1,1 +1,15 @@
-<p>grading-list works!</p>
+<mat-list class="grades-list">
+    @for (item of grades; track item.id) {
+        <nav>
+            <div class="grades">         
+                <a routerLink="/users/{{item.id}}" (click)="clickedGrade(item)">   
+                    <p class="Assignment-name"> Assignment: {{ this.assignments[item.id].name }}</p>
+                    <p class="Assignment-subject"> Subject: {{ this.assignments[item.id].subject }}</p>
+                    <p class="student"> Student: {{ this.userFullNames[item.id]}}</p> 
+                    @if (item.graded){ <p class="grade"> Grade: {{ item.grade }} out of 20</p> }
+                    @else { <p class="grade"> Grade: Not Graded Yet</p>}
+                </a>
+            </div>
+        </nav>
+    }
+</mat-list>

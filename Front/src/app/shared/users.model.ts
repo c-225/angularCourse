@@ -1,6 +1,8 @@
 export class User {
     id!: number;
     username!:string;
+    firstName!:string;
+    lastName!:string;
     password!:string;
     role!:string;
     subjects!: string[];

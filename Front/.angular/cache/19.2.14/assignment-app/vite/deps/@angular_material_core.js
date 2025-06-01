@@ -31,8 +31,8 @@ import {
   _StructuralStylesLoader,
   defaultRippleAnimationConfig
 } from "./chunk-HX6F7PR6.js";
-import "./chunk-JXBCBRYI.js";
 import "./chunk-QRZXWOK7.js";
+import "./chunk-JXBCBRYI.js";
 import "./chunk-2O4WY5GE.js";
 import {
   ENTER,
