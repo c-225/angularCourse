@@ -3,22 +3,12 @@ import {
   CdkScrollableModule,
   ScrollDispatcher,
   ViewportRuler
-<<<<<<< HEAD
-} from "./chunk-6VLY2KVV.js";
-import "./chunk-ZGNBMQME.js";
-import "./chunk-QRZXWOK7.js";
+} from "./chunk-DIA5MYFL.js";
+import "./chunk-PJVZZGOE.js";
+import "./chunk-LUWI4G67.js";
 import {
   coerceBooleanProperty
 } from "./chunk-JXBCBRYI.js";
-import "./chunk-2O4WY5GE.js";
-=======
-} from "./chunk-KFQ35WQV.js";
-import "./chunk-XMCQXWJY.js";
-import "./chunk-QWYU26AJ.js";
-import {
-  coerceBooleanProperty
-} from "./chunk-JXBCBRYI.js";
->>>>>>> 75bb655c9a4776dde4373bbccbf82cfda15cc37c
 import {
   ESCAPE,
   FocusMonitor,
@@ -26,20 +16,20 @@ import {
   InteractivityChecker,
   MatCommonModule,
   hasModifierKey
-} from "./chunk-UW3SXOY7.js";
-import "./chunk-Z7HYN4BK.js";
+} from "./chunk-2NY3RFWG.js";
+import "./chunk-6M3OBZFZ.js";
 import "./chunk-2O4WY5GE.js";
-import {
-  Directionality
-} from "./chunk-RFVVRWMG.js";
 import {
   Platform,
   coerceNumberProperty
-} from "./chunk-25I7QK6V.js";
-import "./chunk-GNCQMX7A.js";
+} from "./chunk-6RGGQ5DE.js";
+import {
+  Directionality
+} from "./chunk-TLDHP372.js";
+import "./chunk-QTGIWCMJ.js";
 import {
   DOCUMENT
-} from "./chunk-WMMX2TDV.js";
+} from "./chunk-PJ4EUTOV.js";
 import {
   ANIMATION_MODULE_TYPE,
   ChangeDetectionStrategy,
@@ -97,7 +87,8 @@ import {
   ɵɵstyleProp,
   ɵɵtemplate,
   ɵɵviewQuery
-} from "./chunk-BWSTGILA.js";
+} from "./chunk-QQVQDVDW.js";
+import "./chunk-WDMUDEB6.js";
 
 // node_modules/@angular/material/fesm2022/sidenav.mjs
 var _c0 = ["*"];

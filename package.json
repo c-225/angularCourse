@@ -2,5 +2,8 @@
   "name": "assignment-app",
   "scripts": {
     "start": "concurrently \"npm --prefix front start\" \"npm --prefix api start\""
+  },
+  "dependencies": {
+    "ngx-infinite-scroll": "^19.0.0"
   }
 }

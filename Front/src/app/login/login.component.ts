@@ -27,7 +27,7 @@ export class LoginComponent {
     username = "";
     password = "";
 
-    onSubmit(event: any) {
+    onSubmit() {
       const user = this.authService.getUser(this.username, this.password);
       if (user) {
         this.router.navigate(['/home']);
