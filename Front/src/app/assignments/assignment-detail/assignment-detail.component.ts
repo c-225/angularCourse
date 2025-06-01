@@ -73,8 +73,8 @@ export class AssignmentDetailComponent implements OnInit{
   isAdmin(){
     return this.authService.currentUser?.role === 'admin';
   }
-  isTeacher(){
-    return this.authService.currentUser?.role === 'teacher';
+  isProf(){
+    return this.authService.currentUser?.role === 'prof';
   }
   isStudent(){
     return this.authService.currentUser?.role === 'student';
