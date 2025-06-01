@@ -21,11 +21,11 @@ import { UsersService } from '../shared/users.service';
     CommonModule, FormsModule,
     //Angular Material
     MatFormFieldModule, MatInputModule, MatButtonModule,
-    MatDatepickerModule, MatNativeDateModule, MatListModule],
+    MatDatepickerModule, MatNativeDateModule,  MatListModule, RouterLink,],
   templateUrl: './users.component.html',
   styleUrl: './users.component.css'
 })
-export class Users implements OnInit {
+export class UsersComponent implements OnInit {
 
   firstName = "";
   lastName = "";
@@ -68,6 +68,8 @@ export class Users implements OnInit {
     getUsers(){
       this.userService.getUsers().subscribe(users => this.users = users);
     }
+    
+
     /*
     onNewUser(event:User){
       this.userService.addUser(event).subscribe(message => console.log(message))

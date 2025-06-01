@@ -1,10 +1,11 @@
 <mat-list class="user-list">
-        @for (item of users; track item.username) {
+    @for (item of users; track item.username) {
         <nav>
             <div class="user">                
-                
+                <a routerLink="/users/{{item.id}}" (click)="clickedUser(item)"></a>
+                {{item.lastName}} - {{item.firstName}} - {{item.role}}
 
             </div>
         </nav>
-        }
-    </mat-list>
+    }
+</mat-list>

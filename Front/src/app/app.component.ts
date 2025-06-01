@@ -12,7 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from "./login/login.component";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Users } from "./users/users.component";
+import { UsersComponent } from "./users/users.component";
 import { User } from './shared/users.model';
 
 @Component({
@@ -22,8 +22,8 @@ import { User } from './shared/users.model';
     MatDividerModule, RouterLink, MatSlideToggleModule, MatSidenavModule,
     FormsModule, MatToolbarModule,
     LoginComponent, HttpClientModule,
-    Users
-],
+    UsersComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

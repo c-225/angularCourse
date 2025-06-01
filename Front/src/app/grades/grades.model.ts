@@ -1,7 +1,7 @@
 export class Grades {
     id!: number;
-    studentId!: number;
-    assignmentId!: number;
-    gradeValue!: number;
-    isGraded!: boolean;
+    student!: number;
+    assignment!: number;
+    grade!: number;
+    graded!: boolean;
 }

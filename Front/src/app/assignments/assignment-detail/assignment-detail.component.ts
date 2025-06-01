@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class AssignmentDetailComponent implements OnInit{
   @Input() transmittedAssignment!: Assignment;
   assignment!: Assignment;
+item: any;
 
   constructor(
     private assignmentService: AssignmentsService,
@@ -48,6 +49,12 @@ export class AssignmentDetailComponent implements OnInit{
         console.log(message);
         this.router.navigate(['/home']);
       });
+  }
+
+  onGradeClick(){
+    if (this.transmittedAssignment === undefined) return;
+    this.router.navigate(['/grades', this.transmittedAssignment.id],
+    {queryParams:{name:this.transmittedAssignment.name}, fragment: 'edition'});
   }
 
   onDelete(){

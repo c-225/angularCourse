@@ -1,5 +1,4 @@
 <html>
-  <app-users></app-users>
 <mat-toolbar>
   <mat-toolbar-row class="toolbar">
     @if (isLoggedIn()){
@@ -33,6 +32,12 @@
           home
         </mat-icon>
         Home page
+      </a>
+    </div>
+    <div>
+      <a routerLink="/grades" (click)="sidenavOpen=false">
+        <mat-icon>School</mat-icon>
+        Grade assignments
       </a>
     </div>
     <div>
