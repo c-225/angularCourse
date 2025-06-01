@@ -10,7 +10,8 @@ import { MatDivider } from '@angular/material/divider';
 import { MatListModule} from '@angular/material/list';
 import { RouterLink, Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { InfiniteScrollDirective, InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 import { SubmittedDirective } from '../shared/submitted.directive';
 import { NotSubmittedDirective } from '../shared/notSubmitted.directive';
@@ -26,7 +27,7 @@ import { AssignmentsService } from '../shared/assignments.service';
     MatDatepickerModule, MatNativeDateModule, MatDivider, MatListModule, RouterLink,
     //My part
     SubmittedDirective, NotSubmittedDirective, 
-    MatProgressSpinnerModule, InfiniteScrollDirective, InfiniteScrollModule
+    MatProgressSpinnerModule, InfiniteScrollDirective, MatGridListModule
 ],
   templateUrl: './assignments.component.html',
   styleUrl: './assignments.component.css'

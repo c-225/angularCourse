@@ -4,16 +4,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 
 import { FormsModule } from '@angular/forms';
 import { Assignment } from '../assignments.model';
 import { AssignmentsService } from '../../shared/assignments.service';
 import { Router } from '@angular/router';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   providers: [provideNativeDateAdapter()],
   selector: 'app-add-assignment',
-  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatDatepickerModule, MatButtonModule],
+  imports: [MatInputModule, MatFormFieldModule, FormsModule, MatDatepickerModule, MatButtonModule,
+    MatDialogModule
+  ],
   templateUrl: './add-assignment.component.html',
   styleUrl: './add-assignment.component.css'
 })
@@ -24,7 +28,8 @@ export class AddAssignmentComponent implements OnInit{
 
   constructor(
     private assignmentService: AssignmentsService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
   
   assignmentName = "";
@@ -42,8 +47,8 @@ export class AddAssignmentComponent implements OnInit{
 
     this.assignmentService.addAssignment(assignment).subscribe(message =>{
       console.log(assignment);
-      this.router.navigate(['/home']); // pour éviter de l'afficher avant de modif les données
+      this.dialog.open(ConfirmationDialogComponent)
+      this.router.navigate(['/home']);
     });
-    //this.router.navigate(['/home']);
-    }
+  }
 }
