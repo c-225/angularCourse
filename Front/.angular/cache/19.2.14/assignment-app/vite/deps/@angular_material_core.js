@@ -1,13 +1,18 @@
 import {
+  MatLine,
+  MatLineModule,
+  setLines
+} from "./chunk-B3HR57AG.js";
+import {
+  MatPseudoCheckbox,
+  MatPseudoCheckboxModule
+} from "./chunk-NQFTILNI.js";
+import {
   DateAdapter,
   MAT_DATE_FORMATS,
   MAT_DATE_LOCALE,
   MAT_DATE_LOCALE_FACTORY
 } from "./chunk-UZKL4Y5I.js";
-import {
-  MatPseudoCheckbox,
-  MatPseudoCheckboxModule
-} from "./chunk-BQVCTWEC.js";
 import {
   ErrorStateMatcher,
   ShowOnDirtyErrorStateMatcher,
@@ -18,10 +23,10 @@ import {
 } from "./chunk-ZYGMT3GR.js";
 import {
   MatRippleLoader
-} from "./chunk-TGYWT2T4.js";
+} from "./chunk-QYKQW4NV.js";
 import {
   MatRippleModule
-} from "./chunk-WPJP7TOO.js";
+} from "./chunk-ZSVUV4S3.js";
 import {
   MAT_RIPPLE_GLOBAL_OPTIONS,
   MatRipple,
@@ -30,10 +35,10 @@ import {
   RippleState,
   _StructuralStylesLoader,
   defaultRippleAnimationConfig
-} from "./chunk-JNKVSGSD.js";
-import "./chunk-QWYU26AJ.js";
-import "./chunk-JXBCBRYI.js";
-import "./chunk-2O4WY5GE.js";
+} from "./chunk-LSQN5T5R.js";
+import "./chunk-RE277DJQ.js";
+import "./chunk-42FJBLFI.js";
+import "./chunk-OJ4U43TX.js";
 import {
   ENTER,
   MATERIAL_SANITY_CHECKS,
@@ -42,19 +47,19 @@ import {
   _IdGenerator,
   _VisuallyHiddenLoader,
   hasModifierKey
-} from "./chunk-JFDKHO7Q.js";
-import "./chunk-RFVVRWMG.js";
+} from "./chunk-G6IQ73HI.js";
 import {
   _CdkPrivateStyleLoader
-} from "./chunk-Z7HYN4BK.js";
-import "./chunk-YU63YJ6B.js";
+} from "./chunk-CX2ZF6AC.js";
+import "./chunk-2O4WY5GE.js";
+import "./chunk-25I7QK6V.js";
+import "./chunk-RFVVRWMG.js";
 import "./chunk-GNCQMX7A.js";
 import "./chunk-WMMX2TDV.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  Directive,
   ElementRef,
   EventEmitter,
   Injectable,
@@ -72,14 +77,12 @@ import {
   inject,
   isSignal,
   setClassMetadata,
-  startWith,
   ɵɵProvidersFeature,
   ɵɵadvance,
   ɵɵattribute,
   ɵɵclassProp,
   ɵɵconditional,
   ɵɵdefineComponent,
-  ɵɵdefineDirective,
   ɵɵdefineInjectable,
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
@@ -99,68 +102,6 @@ import {
   ɵɵtextInterpolate1,
   ɵɵviewQuery
 } from "./chunk-BWSTGILA.js";
-
-// node_modules/@angular/material/fesm2022/line-Bm3zUbBF.mjs
-var MatLine = class _MatLine {
-  static ɵfac = function MatLine_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _MatLine)();
-  };
-  static ɵdir = ɵɵdefineDirective({
-    type: _MatLine,
-    selectors: [["", "mat-line", ""], ["", "matLine", ""]],
-    hostAttrs: [1, "mat-line"]
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(MatLine, [{
-    type: Directive,
-    args: [{
-      selector: "[mat-line], [matLine]",
-      host: {
-        "class": "mat-line"
-      }
-    }]
-  }], null, null);
-})();
-function setLines(lines, element, prefix = "mat") {
-  lines.changes.pipe(startWith(lines)).subscribe(({
-    length
-  }) => {
-    setClass(element, `${prefix}-2-line`, false);
-    setClass(element, `${prefix}-3-line`, false);
-    setClass(element, `${prefix}-multi-line`, false);
-    if (length === 2 || length === 3) {
-      setClass(element, `${prefix}-${length}-line`, true);
-    } else if (length > 3) {
-      setClass(element, `${prefix}-multi-line`, true);
-    }
-  });
-}
-function setClass(element, className, isAdd) {
-  element.nativeElement.classList.toggle(className, isAdd);
-}
-var MatLineModule = class _MatLineModule {
-  static ɵfac = function MatLineModule_Factory(__ngFactoryType__) {
-    return new (__ngFactoryType__ || _MatLineModule)();
-  };
-  static ɵmod = ɵɵdefineNgModule({
-    type: _MatLineModule,
-    imports: [MatCommonModule, MatLine],
-    exports: [MatLine, MatCommonModule]
-  });
-  static ɵinj = ɵɵdefineInjector({
-    imports: [MatCommonModule, MatCommonModule]
-  });
-};
-(() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && setClassMetadata(MatLineModule, [{
-    type: NgModule,
-    args: [{
-      imports: [MatCommonModule, MatLine],
-      exports: [MatLine, MatCommonModule]
-    }]
-  }], null, null);
-})();
 
 // node_modules/@angular/material/fesm2022/option-ChV6uQgD.mjs
 var _c0 = ["*", [["mat-option"], ["ng-container"]]];
