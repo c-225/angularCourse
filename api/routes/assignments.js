@@ -2,13 +2,29 @@ const assignment = require('../model/assignment');
 let Assignment = require('../model/assignment');
 
 // Récupérer tous les assignments (GET)
-function getAssignments(req, res) {
-    Assignment.find((err, assignments) => {
-        if (err) {
-            res.send(err)
-        }
-        res.send(assignments);
-    });
+async function getAssignments(req, res) {
+    let page = parseInt(req.query.page) || 1;
+    let limit = parseInt(req.query.limit) || 10;
+    if (page <= 0) page = 1;
+    if (limit <= 0) limit = 10;
+    const skip = (page - 1) * limit;
+    try {
+        const assignments = await Assignment.find().skip(skip).limit(limit).exec();
+        const totalAssignments = await Assignment.countDocuments();
+        const totalPages = Math.ceil(totalAssignments / limit);
+
+        res.json({
+            docs: assignments,
+            page: page,
+            limit: limit,
+            totalPages: totalPages,
+            totalDocs: totalAssignments,
+            hasNextPage: page < totalPages
+        });
+    } catch (err) {
+        console.error("Error in getAssignments:", err);
+        res.status(500).send(err);
+    }
 }
 
 // Récupérer un assignment par son id (GET)
