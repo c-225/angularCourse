@@ -16,7 +16,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { SubmittedDirective } from '../shared/submitted.directive';
 import { NotSubmittedDirective } from '../shared/notSubmitted.directive';
 import { Assignment } from './assignments.model';
-import { AssignmentsService } from '../shared/assignments.service';
+import { AssignmentsService, PaginatedAssignmentsResponse } from '../shared/assignments.service';
 
 @Component({
   selector: 'app-assignments',
@@ -43,16 +43,22 @@ export class AssignmentsComponent implements OnInit{
   formVisible = false;
   assignments!: Assignment[];
 
-  page: number=0;
-  limit: number =10;
+  page: number=1;
+  limit: number =5;
   isLoading: boolean = false;
   hasMoreData: boolean = true;
+
+  private allAssignments: Assignment[] = [];
+  private totalAssignmentsLoaded = 0;
 
   constructor(
     private assignmentService: AssignmentsService,
     private router: Router){}
 
   ngOnInit(): void{
+    this.assignments = [];
+    this.page = 1;
+    this.hasMoreData = true;
     this.getAssignments();
   }
 
@@ -75,12 +81,60 @@ export class AssignmentsComponent implements OnInit{
     //this.formVisible = true;
   }
 
-  getAssignments(){
-    this.assignmentService.getAssignments().subscribe(assignments => this.assignments = assignments);
+  trackById(index: number, item: Assignment): number {
+    return item.id!;
+  }
+
+  getAssignments() {
+    if (this.isLoading || !this.hasMoreData) {
+      console.log(`getAssignments: Aborting. isLoading=${this.isLoading}, hasMoreData=${this.hasMoreData}`);
+      return;
+    }
+
+    this.isLoading = true;
+    console.log(`Fetching page ${this.page} with limit ${this.limit}`);
+
+    this.assignmentService.getAssignments(this.page, this.limit).subscribe(
+      (response: any) => {
+        this.isLoading = false;
+
+        if (Array.isArray(response)) {
+          console.warn('Response is an array. Assuming it contains all assignments.');
+          if (this.allAssignments.length === 0) {
+            this.allAssignments = response as Assignment[];
+          }
+
+          const startIndex = this.totalAssignmentsLoaded;
+          const endIndex = startIndex + this.limit;
+          const nextChunk = this.allAssignments.slice(startIndex, endIndex);
+
+          this.assignments = [...this.assignments, ...nextChunk];
+          this.totalAssignmentsLoaded += nextChunk.length;
+
+          this.hasMoreData = this.totalAssignmentsLoaded < this.allAssignments.length;
+        } else if (response && Array.isArray(response.docs) && typeof response.hasNextPage === 'boolean') {
+          console.log('Response is a paginated object.');
+          this.assignments = [...this.assignments, ...response.docs];
+          this.hasMoreData = response.hasNextPage;
+        } else {
+          console.error('Invalid response structure:', response);
+          this.hasMoreData = false;
+        }
+
+        console.log(`Total assignments loaded: ${this.assignments.length}`);
+      },
+      (error) => {
+        console.error('Error fetching assignments:', error);
+        this.isLoading = false;
+        this.hasMoreData = false;
+      }
+    );
   }
 
   onScroll() {
+    console.log('onScroll triggered. isLoading:', this.isLoading, 'hasMoreData:', this.hasMoreData);
     if (!this.isLoading && this.hasMoreData) {
+      this.page++;
       this.getAssignments();
     }
   }

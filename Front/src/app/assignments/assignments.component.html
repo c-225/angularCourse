@@ -1,37 +1,34 @@
 <main class="container">
-
-    <mat-list class="assignment-list"
+  <div
+    class="scrollable-container"
     infiniteScroll
     [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="50"
-    (scrolled)="onScroll()">
-        @for (item of assignments; track item.name) {
-        <nav>
-            <div class="assignment">
-                <h3 mat-subheader>{{item.dueDate | date:'mediumDate'}}</h3>
-                
-                <a routerLink="/assignments/{{item.id}}" (click)="clickedAssignment(item)">
-                @if (!item.submitted){
-                <mat-list-item appNotSubmitted>
-                    The assignment '{{item.name}}' hasn't been submitted.
-                </mat-list-item>
-                }
-                @else {
-                <mat-list-item appSubmitted>
-                    The assignment '{{item.name}}' has been submitted.
-                </mat-list-item>
-                }
-                <mat-divider></mat-divider>
-                </a>
-            </div>
-        </nav>
-        }
-
-        @if (isLoading) {
-            <div class="loading-indicator">
-                <mat-progress-spinner diameter="40"></mat-progress-spinner>
-            </div>
-        }
+    (scrolled)="onScroll()"
+  >
+    <mat-list class="assignment-list">
+      <mat-list-item *ngFor="let item of assignments; trackBy: trackById">
+        <div class="assignment">
+          <h3 mat-subheader>{{ item.dueDate | date: 'mediumDate' }}</h3>
+          <a routerLink="/assignments/{{ item.id }}" (click)="clickedAssignment(item)">
+            <mat-list-item *ngIf="!item.submitted" appNotSubmitted>
+              The assignment '{{ item.name }}' hasn't been submitted.
+            </mat-list-item>
+            <mat-list-item *ngIf="item.submitted" appSubmitted>
+              The assignment '{{ item.name }}' has been submitted.
+            </mat-list-item>
+          </a>
+          <mat-divider></mat-divider>
+        </div>
+      </mat-list-item>
     </mat-list>
 
+    <div *ngIf="isLoading" class="loading-indicator">
+      <mat-progress-spinner diameter="40"></mat-progress-spinner>
+    </div>
+
+    <div *ngIf="!isLoading && !hasMoreData" class="no-more-data">
+      <p>No more assignments to load.</p>
+    </div>
+  </div>
 </main>

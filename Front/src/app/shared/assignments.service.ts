@@ -4,6 +4,15 @@ import { Observable, of } from 'rxjs';
 import { LoggingService } from './logging.service';
 import { HttpClient } from '@angular/common/http';
 
+export interface PaginatedAssignmentsResponse {
+  docs: Assignment[];
+  page: number;
+  limit: number;
+  totalPages: number;
+  totalDocs: number;
+  hasNextPage: boolean;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,8 +32,8 @@ export class AssignmentsService {
     return of(assignment);
   }
   */
-  getAssignments():Observable<any> {
-    return this.http.get<any>(this.backendURL)
+  getAssignments(page: number, limit: number): Observable<PaginatedAssignmentsResponse> {
+    return this.http.get<PaginatedAssignmentsResponse>(`${this.backendURL}?page=${page}&limit=${limit}`);
   }
     
   getAssignment(id: number): Observable<any>{
