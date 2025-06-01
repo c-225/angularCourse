@@ -13,6 +13,7 @@ import { MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from "./login/login.component";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Users } from "./users/users.component";
+import { User } from './shared/users.model';
 
 @Component({
   selector: 'app-root',
@@ -27,8 +28,9 @@ import { Users } from "./users/users.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
-  title = 'Assignment Management App';
+  title = 'Pronote';
   sidenavOpen = false;
+  currentUser: any;
 
   constructor(private authService:AuthService, private router: Router) {}
   ngOnInit(): void {

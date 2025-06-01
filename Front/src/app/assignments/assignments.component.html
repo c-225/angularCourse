@@ -1,6 +1,6 @@
 <main class="container">
 
-    <mat-list class="assignment-list"
+    <mat-list class="assignmentList"
     infiniteScroll
     [infiniteScrollDistance]="2"
     [infiniteScrollThrottle]="50"
@@ -12,21 +12,23 @@
                 
                 <a routerLink="/assignments/{{item.id}}" (click)="clickedAssignment(item)">
                 @if (!item.submitted){
-                <mat-list-item appNotSubmitted>
+                <mat-list-item appNotSubmitted class="notSubmitted" style="text-decoration: none;">
                     The assignment '{{item.name}}' hasn't been submitted.
                 </mat-list-item>
                 }
                 @else {
-                <mat-list-item appSubmitted>
+                <mat-list-item appSubmitted class="submitted" style="text-decoration: none;">
                     The assignment '{{item.name}}' has been submitted.
                 </mat-list-item>
+                <button mat-raised-button (click)="deleteAssignment(item) ; $event.stopPropagation()" class="deleteButton">
+                    Supprimer
+                </button>
                 }
                 <mat-divider></mat-divider>
                 </a>
             </div>
         </nav>
         }
-
         @if (isLoading) {
             <div class="loading-indicator">
                 <mat-progress-spinner diameter="40"></mat-progress-spinner>
