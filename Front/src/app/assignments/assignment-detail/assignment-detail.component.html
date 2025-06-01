@@ -15,7 +15,7 @@
                 <button mat-stroked-button (click)="onClickEdit()" class="Edit-button"> Edit </button>
                 <button mat-stroked-button (click)="onDelete()" class="Delete-button" color="warn"> Delete </button>
             }
-            @if (isTeacher()){
+            @if (isProf()){
                 <button mat-stroked-button class="Grade-button"> Grade </button>
             }
             @if (isStudent()) {
