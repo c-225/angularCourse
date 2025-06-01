@@ -1,31 +1,23 @@
 table,
 td,
 tr {
-    border: 1px solid #ACBED8;
+    border: 1px solid black;
 }
 
 .submitted {
-    padding: 15px;
-    margin-bottom: 20px;
-    min-height: 50px;
-    width: 100%;
-    border-radius: 8px;
-    text-decoration: none;
+    background-color: lightgreen;
+    color: green
 }
 
 .notSubmitted {
-    padding: 15px;
-    margin-bottom: 20px;
-    min-height: 50px;
-    width: 100%;
-    border-radius: 8px;
-    text-decoration: none;
+    background-color: lightcoral;
+    color: red
 }
 
 .container {
     display: flex;
-    flex-direction: grid;
-    margin: 10px;
+    flex-direction: column;
+    margin: 5px;
 }
 
 .addAssignment {
@@ -33,42 +25,29 @@ tr {
 }
 
 .assignment {
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-right: 1px solid #D78521;
-    border-left: 1px solid #D78521;
-    border-top: 1px solid #D78521;
-    border-bottom: 1px solid #D78521;
-    border-width: 1px;
     margin: 5px;
-    margin-bottom: 25px;
     padding-left: 15px;
     padding-right: 15px;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.assignment:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+.assignment-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    padding: 10px;
 }
 
-.assignmentList {
-    max-height: 100%;
+.loading-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.assignment-list {
+    max-height: 80vh;
     overflow-y: auto;
-}
-
-.deleteButton {
-    position: absolute;
-    margin-left: 8px;
-    transition: all 0.2s ease;
-}
-
-.deleteButton:hover {
-    transform: scale(1.1);
-    background-color: rgba(244, 67, 54, 0.1);
 }

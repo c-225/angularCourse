@@ -12,10 +12,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from "./login/login.component";
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { UsersComponent } from "./users/users.component";
-import { GradesComponent } from "./grades/grades.component";
-import { GradingList } from "./grades/grading-list/grading-list";
-import { User } from './shared/users.model';
+import { Users } from "./users/users.component";
 
 @Component({
   selector: 'app-root',
@@ -30,9 +27,8 @@ import { User } from './shared/users.model';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit{
-  title = 'Pronote';
+  title = 'Assignment Management App';
   sidenavOpen = false;
-  currentUser: any;
 
   constructor(private authService:AuthService, private router: Router) {}
   ngOnInit(): void {

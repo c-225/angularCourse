@@ -1,15 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+}
+
 body {
-  background-color: #E8EBF7;
-  font-family: 'Inter', 'Roboto', sans-serif;
-  color: #333;
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
-}
-button.mat-stroked-button {
-  transition: all 0.3s ease;
-}
-button.mat-stroked-button:hover {
-  background-color: #F2D398;
-  transform: translateY(-2px);
+    margin: 30;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }

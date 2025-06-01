@@ -8,10 +8,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDivider } from '@angular/material/divider';
 import { MatListModule} from '@angular/material/list';
-import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
+import { InfiniteScrollDirective, InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { SubmittedDirective } from '../shared/submitted.directive';
 import { NotSubmittedDirective } from '../shared/notSubmitted.directive';
@@ -27,8 +26,7 @@ import { AssignmentsService } from '../shared/assignments.service';
     MatDatepickerModule, MatNativeDateModule, MatDivider, MatListModule, RouterLink,
     //My part
     SubmittedDirective, NotSubmittedDirective, 
-    MatProgressSpinnerModule, InfiniteScrollDirective, InfiniteScrollDirective,
-    MatButtonModule, MatIconModule
+    MatProgressSpinnerModule, InfiniteScrollDirective, InfiniteScrollModule
 ],
   templateUrl: './assignments.component.html',
   styleUrl: './assignments.component.css'
@@ -85,12 +83,11 @@ export class AssignmentsComponent implements OnInit{
       this.getAssignments();
     }
   }
-
-  deleteAssignment(assignment: Assignment): void {
-      if (confirm('Êtes-vous sûr de vouloir supprimer cet assignment ?')) {
-      this.assignmentService.deleteAssignment(assignment).subscribe(() => {
-          this.assignments = this.assignments.filter(a => a.id !== assignment.id);
-        });
-    }
+  /*
+  onNewAssignment(event:Assignment){
+    this.assignmentService.addAssignment(event).subscribe(message => console.log(message))
+    this.formVisible = false;
   }
+  */
+
 }

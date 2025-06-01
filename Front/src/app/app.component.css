@@ -2,12 +2,12 @@ mat-sidenav-container {
   height: calc(205vh - 115vh);
 }
 
+
 mat-toolbar {
-  background-color: transparent;
+  background-color: rgb(200, 125, 212);
   height: 20px;
-  padding-bottom: 15px;
   display: flex;
-  text-decoration: none;
+  margin-bottom: 30px;
 }
 
 .toolbar {
@@ -15,23 +15,24 @@ mat-toolbar {
   align-items: center;
   justify-content: center;
   width: 100%;
-  color: #333;
 }
 
 .menu-button {
   position: absolute;
   left: 1%;
-  color: #D78521;
 }
+
+
+
 
 /* sidenav content*/
 
 mat-sidenav {
   width: 200px;
   background-color: white;
-  border-right: 3px solid #D78521;
-  border-bottom: 1px solid #ACBED8;
-  border-top: 1px solid #ACBED8;
+  border-right: 3px solid rgb(128, 128, 128);
+  border-bottom: 1px solid rgb(128, 128, 128);
+  border-top: 1px solid rgb(128, 128, 128);
   padding-top: 25px;
 }
 
@@ -43,40 +44,21 @@ mat-sidenav div a {
   display: flex;
   align-items: center;
   padding-left: 16px;
-  color: #333;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-mat-sidenav div a:hover {
-  background-color: #F2D398;
-  border-left: 4px solid #D78521;
 }
 
 mat-sidenav mat-icon {
   margin-right: 8px;
-  color: #D78521;
+  color: #6c0086;
 }
 
 mat-sidenav-content, app-login {
   display: flex;
-  justify-content: center;
-  background-color: #E8EBF7;
+  justify-content: center;  /* horizontal */
+  background-color: white;
 }
 
 .assignment-list, .assignment {
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.username {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
 }
